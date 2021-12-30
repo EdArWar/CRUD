@@ -1,0 +1,5 @@
+{
+  "PORT": 3001,
+  "dbUrl": "mongodb+srv://edward:archer@cluster0.khjln.mongodb.net/crud?retryWrites=true&w=majority",
+  "secretKey": "CRUD_project"
+}
