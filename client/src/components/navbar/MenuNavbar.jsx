@@ -24,7 +24,7 @@ const MenuNavbar = () => {
                 color: "white",
                 cursor: "pointer",
               }}
-              onClick={(e) => dispatch(modalOp.handleSignInState(!signInModal))}
+              onClick={() => dispatch(modalOp.handleSignInState(!signInModal))}
             >
               Login
             </span>
