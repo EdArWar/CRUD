@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import SignInModal from "../components/modal/signIn/SignInModal";
 import MenuNavbar from "../components/navbar/MenuNavbar";
 
 const Layout = () => {
@@ -7,6 +8,7 @@ const Layout = () => {
     <>
       <MenuNavbar />
       <Outlet />
+      <SignInModal />
     </>
   );
 };

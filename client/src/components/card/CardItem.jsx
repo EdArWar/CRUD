@@ -4,13 +4,8 @@ import pic from "../../assets/images/pic.jpg";
 
 const CardItem = () => {
   return (
-    <Col
-      lg={3}
-      style={{
-        margin: "20px auto",
-      }}
-    >
-      <Card style={{ width: "18rem" }}>
+    <Col xs={12} sm={6} md={4}>
+      <Card>
         <Card.Img variant="top" src={pic} width={"100%"} height={"auto"} />
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
