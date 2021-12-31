@@ -1,4 +1,4 @@
-const { globalSlice } = require("./globalSlice");
+import { globalSlice } from "./globalSlice";
 
 const { setAuth, setLoader, setToken } = globalSlice.actions;
 
