@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { modalOp, modalSel } from "../../../store/modal";
-import Tabs from "../../tabs/Tabs";
+import SignIn from "../../signIn/SignIn";
 import ModalCustom from "../ModalCustom";
 
 const SignInModal = () => {
@@ -15,9 +15,8 @@ const SignInModal = () => {
         dispatch(modalOp.handleSignInState(false));
       }}
       title="Sign In"
-      closeButton={false}
     >
-      <Tabs />
+      <SignIn />
     </ModalCustom>
   );
 };
