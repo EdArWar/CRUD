@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { globalOp, globalSel } from "../../store/global";
 import Login from "./login/Login";
 import Registration from "./registration/Registration";
 import "./SignIn.css";
 
 const SignIn = () => {
-  const [state, setState] = useState(true);
+  const dispatch = useDispatch();
+
+  const isRegistered = useSelector(globalSel.isRegistered);
 
   return (
     <>
@@ -16,10 +20,14 @@ const SignIn = () => {
           marginBottom: "2%",
         }}
       >
-        <Button onClick={() => setState(true)}>Login</Button>
-        <Button onClick={() => setState(false)}>Registration</Button>
+        <Button onClick={() => dispatch(globalOp.handleRegisteredState(false))}>
+          Login
+        </Button>
+        <Button onClick={() => dispatch(globalOp.handleRegisteredState(true))}>
+          Registration
+        </Button>
       </div>
-      {state ? <Login /> : <Registration />}
+      {!isRegistered ? <Login /> : <Registration />}
     </>
   );
 };

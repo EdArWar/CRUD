@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import AuthApi from "../../../api/AuthApi";
 import "./Registration.css";
 
 const Registration = () => {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = useState("admin@mail.ru");
+  const [name, setName] = useState("admin");
+  const [password, setPassword] = useState("admin");
 
   useEffect(() => {
     return () => {
@@ -15,10 +19,14 @@ const Registration = () => {
     };
   }, []);
 
+  const onSubmitHandler = () => {
+    dispatch(AuthApi.registration(email, name, password));
+  };
+
   return (
     <Container className="registration_container">
       <Row className="justify-content-md-center">
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3">
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
@@ -27,7 +35,7 @@ const Registration = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
@@ -36,7 +44,7 @@ const Registration = () => {
             onChange={(e) => setName(e.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -45,7 +53,9 @@ const Registration = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary">Submit</Button>
+        <Button variant="primary" onClick={onSubmitHandler}>
+          Submit
+        </Button>
       </Row>
     </Container>
   );

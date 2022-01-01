@@ -14,5 +14,8 @@ export const globalSlice = createSlice({
     setToken(state, action) {
       state.token = action.payload;
     },
+    setRegistration(state, action) {
+      state.isRegistered = action.payload;
+    },
   },
 });

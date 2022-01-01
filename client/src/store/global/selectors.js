@@ -8,6 +8,11 @@ const loader = createSelector([globalSelector], (global) => global.loader);
 
 const token = createSelector([globalSelector], (global) => global.token);
 
-const selectors = { isAuth, loader, token };
+const isRegistered = createSelector(
+  [globalSelector],
+  (global) => global.isRegistered
+);
+
+const selectors = { isAuth, loader, token, isRegistered };
 
 export default selectors;
