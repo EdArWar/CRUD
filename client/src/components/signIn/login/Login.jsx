@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import AuthApi from "../../../api/AuthApi";
 import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = useState("admin@mail.ru");
+  const [password, setPassword] = useState("admin");
 
   useEffect(() => {
     return () => {
@@ -12,6 +16,10 @@ const Login = () => {
       setPassword("");
     };
   }, []);
+
+  const onLogin = () => {
+    dispatch(AuthApi.login(email, password));
+  };
 
   return (
     <Container className="login_container">
@@ -35,7 +43,9 @@ const Login = () => {
           />
         </Form.Group>
 
-        <Button variant="primary">Submit</Button>
+        <Button variant="primary" onClick={onLogin}>
+          Login
+        </Button>
       </Row>
     </Container>
   );

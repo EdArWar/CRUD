@@ -19,7 +19,7 @@ const Registration = () => {
     };
   }, []);
 
-  const onSubmitHandler = () => {
+  const onRegistration = () => {
     dispatch(AuthApi.registration(email, name, password));
   };
 
@@ -53,8 +53,8 @@ const Registration = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary" onClick={onSubmitHandler}>
-          Submit
+        <Button variant="primary" onClick={onRegistration}>
+          Registration
         </Button>
       </Row>
     </Container>
