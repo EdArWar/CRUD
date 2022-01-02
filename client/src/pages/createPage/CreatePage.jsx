@@ -57,7 +57,6 @@ const CreatePage = () => {
               type="file"
               multiple={false}
               onDone={({ base64 }) => {
-                console.log("base64", base64);
                 setUserPicture(base64);
               }}
             />

@@ -45,12 +45,10 @@ class AuthApi {
   login(email, password) {
     return async (dispatch) => {
       try {
-        const body = { email, password };
-
-        const response = await axios.post(
-          `${this.endPoint}/api/auth/login`,
-          body
-        );
+        const response = await axios.post(`${this.endPoint}/api/auth/login`, {
+          email,
+          password,
+        });
 
         if (response.status === 200) {
           const token = response.data.token;
@@ -61,6 +59,25 @@ class AuthApi {
           localStorage.setItem("token", token);
           dispatch(modalOp.handleSignInState(false));
         }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }
+
+  auth() {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(`${this.endPoint}/api/auth/auth`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        const userData = response.data.user;
+
+        dispatch(userOp.handleSetUserData(userData));
+        dispatch(globalOp.handleAuthState(true));
       } catch (error) {
         console.log(error);
       }

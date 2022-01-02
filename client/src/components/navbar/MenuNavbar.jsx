@@ -1,10 +1,13 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { globalOp, globalSel } from "../../store/global";
 import { modalOp, modalSel } from "../../store/modal";
+import { userOp } from "../../store/user";
 import CustomLink from "../custom/link/CustomLink";
 
 const MenuNavbar = () => {
+  const isAuth = useSelector(globalSel.isAuth);
   const signInModal = useSelector(modalSel.signInModal);
   const dispatch = useDispatch();
 
@@ -19,15 +22,33 @@ const MenuNavbar = () => {
             <CustomLink to="/create">Create</CustomLink>
           </Nav>
           <Nav>
-            <span
-              style={{
-                color: "white",
-                cursor: "pointer",
-              }}
-              onClick={() => dispatch(modalOp.handleSignInState(!signInModal))}
-            >
-              Login
-            </span>
+            {!isAuth ? (
+              <span
+                style={{
+                  color: "white",
+                  cursor: "pointer",
+                }}
+                onClick={() =>
+                  dispatch(modalOp.handleSignInState(!signInModal))
+                }
+              >
+                Login
+              </span>
+            ) : (
+              <span
+                style={{
+                  color: "white",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  dispatch(userOp.handleSetUserData([]));
+                  dispatch(globalOp.handleAuthState(false));
+                  localStorage.removeItem("token");
+                }}
+              >
+                Logout
+              </span>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
