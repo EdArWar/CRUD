@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { globalOp, globalSel } from "../../store/global";
 import { modalOp, modalSel } from "../../store/modal";
 import { userOp } from "../../store/user";
@@ -10,6 +11,7 @@ const MenuNavbar = () => {
   const isAuth = useSelector(globalSel.isAuth);
   const signInModal = useSelector(modalSel.signInModal);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -32,6 +34,7 @@ const MenuNavbar = () => {
                   dispatch(userOp.handleSetUserData([]));
                   dispatch(globalOp.handleAuthState(null));
                   localStorage.removeItem("token");
+                  navigate("/", { replace: true });
                 }}
               >
                 Logout
