@@ -16,16 +16,17 @@ const CreatePage = () => {
     }
   }, []);
 
-  const [userName, setUserName] = useState("");
-  const [userProfession, setUserProfession] = useState("");
-  const [userPosition, setUserPosition] = useState("");
-  const [userPicture, setUserPicture] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [profession, setProfession] = useState("");
+  const [position, setPosition] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const onCreateHandle = () => {
-    console.log("userName", userName);
-    console.log("userProfession", userProfession);
-    console.log("userPosition", userPosition);
-    console.log("userPicture", userPicture);
+    console.log("userName", name);
+    console.log("userProfession", profession);
+    console.log("userPosition", position);
+    console.log("userPicture", avatar);
   };
 
   return (
@@ -36,8 +37,18 @@ const CreatePage = () => {
           <Form.Control
             type="text"
             placeholder="Enter Name"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>User Age</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter Age"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
             required
           />
         </Form.Group>
@@ -46,8 +57,8 @@ const CreatePage = () => {
           <Form.Control
             type="text"
             placeholder="Enter Profession"
-            value={userProfession}
-            onChange={(e) => setUserProfession(e.target.value)}
+            value={profession}
+            onChange={(e) => setProfession(e.target.value)}
             required
           />
         </Form.Group>
@@ -56,8 +67,8 @@ const CreatePage = () => {
           <Form.Control
             type="text"
             placeholder="Enter Position"
-            value={userPosition}
-            onChange={(e) => setUserPosition(e.target.value)}
+            value={position}
+            onChange={(e) => setPosition(e.target.value)}
             required
           />
         </Form.Group>
@@ -69,7 +80,7 @@ const CreatePage = () => {
               type="file"
               multiple={false}
               onDone={({ base64 }) => {
-                setUserPicture(base64);
+                setAvatar(base64);
               }}
             />
           </Row>

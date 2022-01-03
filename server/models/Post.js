@@ -1,12 +1,12 @@
 const { Schema, model, ObjectId } = require("mongoose");
 
 const PostSchema = new Schema({
-  title: String,
-  message: String,
   name: String,
+  age: Number,
+  profession: String,
+  position: String,
   creator: String,
-  tags: [String],
-  selectedFile: String,
+  avatar: String,
   likes: { type: [String], default: [] },
   createdAt: {
     type: Date,
