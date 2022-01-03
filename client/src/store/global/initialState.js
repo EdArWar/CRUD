@@ -1,5 +1,5 @@
 export const initialGlobalState = {
-  isAuth: false,
+  isAuth: null,
   loader: false,
   token: false,
   isRegistered: false,

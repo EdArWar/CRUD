@@ -8,7 +8,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    localStorage.getItem("token") && dispatch(AuthApi.auth());
+    !!localStorage.getItem("token") && dispatch(AuthApi.auth());
   }, []);
 
   return (

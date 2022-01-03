@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import FileBase from "react-file-base64";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { globalSel } from "../../store/global";
 import "./CreatePage.css";
 
 const CreatePage = () => {
+  const navigate = useNavigate();
+  const isAuth = useSelector(globalSel.isAuth);
+
+  useEffect(() => {
+    if (!isAuth) {
+      navigate("/", { replace: true });
+    }
+  }, []);
+
   const [userName, setUserName] = useState("");
   const [userProfession, setUserProfession] = useState("");
   const [userPosition, setUserPosition] = useState("");

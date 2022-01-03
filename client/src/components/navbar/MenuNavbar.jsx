@@ -22,7 +22,21 @@ const MenuNavbar = () => {
             <CustomLink to="/create">Create</CustomLink>
           </Nav>
           <Nav>
-            {!isAuth ? (
+            {!!isAuth ? (
+              <span
+                style={{
+                  color: "white",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  dispatch(userOp.handleSetUserData([]));
+                  dispatch(globalOp.handleAuthState(null));
+                  localStorage.removeItem("token");
+                }}
+              >
+                Logout
+              </span>
+            ) : (
               <span
                 style={{
                   color: "white",
@@ -33,20 +47,6 @@ const MenuNavbar = () => {
                 }
               >
                 Login
-              </span>
-            ) : (
-              <span
-                style={{
-                  color: "white",
-                  cursor: "pointer",
-                }}
-                onClick={() => {
-                  dispatch(userOp.handleSetUserData([]));
-                  dispatch(globalOp.handleAuthState(false));
-                  localStorage.removeItem("token");
-                }}
-              >
-                Logout
               </span>
             )}
           </Nav>
