@@ -11,7 +11,8 @@ const PORT = config.get("PORT");
 
 app.use(fileUpload({}));
 app.use(corsMiddleware);
-app.use(express.json());
+app.use(express.json({ limit: "30mb", extended: true }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(express.static("static"));
 
 app.use("/api/auth", AuthRoutes);
