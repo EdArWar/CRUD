@@ -4,6 +4,7 @@ const config = require("config");
 const fileUpload = require("express-fileupload");
 const corsMiddleware = require("./middleware/cors.middleware");
 const AuthRoutes = require("./routes/AuthRoutes");
+const PostRoutes = require("./routes/PostRoutes");
 
 const app = express();
 const PORT = config.get("PORT");
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(express.static("static"));
 
 app.use("/api/auth", AuthRoutes);
+app.use("/api/post", PostRoutes);
 
 const start = async () => {
   try {
