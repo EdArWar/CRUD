@@ -2,11 +2,9 @@ import axios from "axios";
 import { globalOp } from "../store/global";
 import { modalOp } from "../store/modal";
 import { userOp } from "../store/user";
+import { API } from "./API";
 
 class AuthApi {
-  constructor() {
-    this.endPoint = "http://localhost:3001";
-  }
   registration(email, name, password) {
     return async (dispatch) => {
       try {
@@ -28,10 +26,7 @@ class AuthApi {
           password,
         };
 
-        const response = await axios.post(
-          `${this.endPoint}/api/auth/registration`,
-          body
-        );
+        const response = await axios.post(`${API}/api/auth/registration`, body);
         const data = response.data;
         if (!data.errorStatus) {
           dispatch(globalOp.handleRegisteredState(false));
@@ -45,7 +40,7 @@ class AuthApi {
   login(email, password) {
     return async (dispatch) => {
       try {
-        const response = await axios.post(`${this.endPoint}/api/auth/login`, {
+        const response = await axios.post(`${API}/api/auth/login`, {
           email,
           password,
         });
@@ -68,7 +63,7 @@ class AuthApi {
   auth() {
     return async (dispatch) => {
       try {
-        const response = await axios.get(`${this.endPoint}/api/auth/auth`, {
+        const response = await axios.get(`${API}/api/auth/auth`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

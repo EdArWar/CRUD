@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import FileBase from "react-file-base64";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import PostApi from "../../api/PostApi";
 import { globalSel } from "../../store/global";
 import "./CreatePage.css";
 
 const CreatePage = () => {
   const navigate = useNavigate();
   const isAuth = useSelector(globalSel.isAuth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!isAuth) {
@@ -23,10 +25,7 @@ const CreatePage = () => {
   const [avatar, setAvatar] = useState("");
 
   const onCreateHandle = () => {
-    console.log("userName", name);
-    console.log("userProfession", profession);
-    console.log("userPosition", position);
-    console.log("userPicture", avatar);
+    dispatch(PostApi.createPost(name, age, profession, position, avatar));
   };
 
   return (
