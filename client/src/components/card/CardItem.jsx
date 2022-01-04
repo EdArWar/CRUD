@@ -31,7 +31,9 @@ const CardItem = ({ post }) => {
           </Card.Body>
           <ListGroup className="list-group-flush">
             <ListGroupItem>Clan: {post.clan}</ListGroupItem>
-            <ListGroupItem>Organization: {post.organization}</ListGroupItem>
+            <ListGroupItem>
+              Organization: {post.organization || "Does not consist"}
+            </ListGroupItem>
             <ListGroupItem>Profession: {post.profession}</ListGroupItem>
             <ListGroupItem>Position: {post.position}</ListGroupItem>
             <ListGroupItem>Creator ID: {post.creator}</ListGroupItem>

@@ -18,11 +18,11 @@ const CreatePage = () => {
     }
   }, []);
 
-  const [name, setName] = useState("");
-  const [clan, setClan] = useState("");
+  const [name, setName] = useState("Naruto");
+  const [clan, setClan] = useState("Uzumaki");
   const [organization, setOrganization] = useState("");
-  const [profession, setProfession] = useState("");
-  const [position, setPosition] = useState("");
+  const [profession, setProfession] = useState("Shinobi");
+  const [position, setPosition] = useState("Hokage");
   const [avatar, setAvatar] = useState("");
 
   const onCreateHandle = () => {

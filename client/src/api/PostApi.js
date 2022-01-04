@@ -3,14 +3,7 @@ import { postOp } from "../store/post";
 import { API } from "./API";
 
 class PostApi {
-  createPost(
-    name,
-    clan,
-    organization = "not specified",
-    profession,
-    position,
-    avatar
-  ) {
+  createPost(name, clan, organization, profession, position, avatar) {
     return async (dispatch) => {
       try {
         console.log("createPost");

@@ -3,7 +3,7 @@ const { Schema, model, ObjectId } = require("mongoose");
 const PostSchema = new Schema({
   name: String,
   clan: String,
-  organization: String,
+  organization: { type: String, default: "Does not consist" },
   profession: String,
   position: String,
   creator: String,
