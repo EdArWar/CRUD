@@ -16,7 +16,7 @@ const CreatePage = () => {
     if (!isAuth) {
       navigate("/", { replace: true });
     }
-  }, []);
+  }, [isAuth]);
 
   const [name, setName] = useState("Naruto");
   const [clan, setClan] = useState("Uzumaki");

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { globalOp } from "../store/global";
 import { postOp } from "../store/post";
 import { API } from "./API";
 
@@ -32,19 +33,19 @@ class PostApi {
   getAllPosts() {
     return async (dispatch) => {
       try {
+        dispatch(globalOp.handleLoaderState(true));
         const response = await axios.get(`${API}/api/post/`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-
-        console.log("response", response);
-
         if (response.status === 200) {
           dispatch(postOp.handlePostData(response.data));
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        dispatch(globalOp.handleLoaderState(false));
       }
     };
   }

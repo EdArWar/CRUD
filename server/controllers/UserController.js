@@ -74,7 +74,7 @@ class UserController {
       }
 
       const token = jwt.sign({ id: user.id }, config.get("secretKey"), {
-        expiresIn: "1h",
+        expiresIn: "10h",
       });
 
       return res.status(200).json({
