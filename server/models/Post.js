@@ -2,7 +2,8 @@ const { Schema, model, ObjectId } = require("mongoose");
 
 const PostSchema = new Schema({
   name: String,
-  age: Number,
+  clan: String,
+  organization: String,
   profession: String,
   position: String,
   creator: String,

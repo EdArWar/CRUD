@@ -19,20 +19,23 @@ const CreatePage = () => {
   }, []);
 
   const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const [clan, setClan] = useState("");
+  const [organization, setOrganization] = useState("");
   const [profession, setProfession] = useState("");
   const [position, setPosition] = useState("");
   const [avatar, setAvatar] = useState("");
 
   const onCreateHandle = () => {
-    dispatch(PostApi.createPost(name, age, profession, position, avatar));
+    dispatch(
+      PostApi.createPost(name, clan, organization, profession, position, avatar)
+    );
   };
 
   return (
     <Container className="create_page_container">
       <Row>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>User Name</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Name"
@@ -42,17 +45,27 @@ const CreatePage = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>User Age</Form.Label>
+          <Form.Label>Clan</Form.Label>
           <Form.Control
-            type="number"
-            placeholder="Enter Age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
+            type="text"
+            placeholder="Enter Clan"
+            value={clan}
+            onChange={(e) => setClan(e.target.value)}
             required
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>User Profession</Form.Label>
+          <Form.Label>Organization</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Organization"
+            value={organization}
+            onChange={(e) => setOrganization(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Profession</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Profession"
@@ -62,7 +75,7 @@ const CreatePage = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>User Position</Form.Label>
+          <Form.Label>Position</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Position"
@@ -72,7 +85,7 @@ const CreatePage = () => {
           />
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>User Picture</Form.Label>
+          <Form.Label>Picture</Form.Label>
           {/* <Form.Control type="file" /> */}
           <Row>
             <FileBase

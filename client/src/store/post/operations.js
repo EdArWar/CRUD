@@ -1,4 +1,4 @@
-import postSlice from ".";
+import { postSlice } from "./postSlice";
 
 const { setPostData } = postSlice.actions;
 

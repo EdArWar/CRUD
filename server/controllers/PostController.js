@@ -2,6 +2,8 @@ const Post = require("../models/Post");
 
 class PostController {
   async createPost(req, res) {
+    console.log("createPost");
+
     try {
       const post = req.body;
 
@@ -13,6 +15,18 @@ class PostController {
 
       await newPost.save();
       res.status(201).json(newPost);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getAllPosts(req, res) {
+    try {
+      const posts = await Post.find();
+
+      console.log("posts", posts);
+
+      res.status(200).json(posts);
     } catch (error) {
       console.log(error);
     }

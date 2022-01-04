@@ -1,8 +1,7 @@
 import React from "react";
 import { Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
-import pic from "../../assets/images/pic.jpg";
 
-const CardItem = () => {
+const CardItem = ({ post }) => {
   return (
     <Col xs={12} sm={12} md={6} lg={4}>
       <div
@@ -19,7 +18,7 @@ const CardItem = () => {
             style={{
               width: "100%",
               height: "200px",
-              backgroundImage: `url(${pic})`,
+              backgroundImage: `url(${post.avatar})`,
               backgroundPosition: "center",
               overflow: "hidden",
               backgroundSize: "cover",
@@ -28,15 +27,18 @@ const CardItem = () => {
             }}
           ></div>
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>{post.name}</Card.Title>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Cras justo odio</ListGroupItem>
-            <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-            <ListGroupItem>Vestibulum at eros</ListGroupItem>
+            <ListGroupItem>Clan: {post.clan}</ListGroupItem>
+            <ListGroupItem>Organization: {post.organization}</ListGroupItem>
+            <ListGroupItem>Profession: {post.profession}</ListGroupItem>
+            <ListGroupItem>Position: {post.position}</ListGroupItem>
+            <ListGroupItem>Creator ID: {post.creator}</ListGroupItem>
+            <ListGroupItem>CreatedAt: {post.createdAt}</ListGroupItem>
           </ListGroup>
           <Card.Body>
-            <Card.Link href="#">Like</Card.Link>
+            <Card.Link href="#">Like {post.likes}</Card.Link>
             <Card.Link href="#">Update</Card.Link>
           </Card.Body>
         </Card>

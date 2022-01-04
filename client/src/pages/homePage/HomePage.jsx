@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import PostApi from "../../api/PostApi";
 import CardItem from "../../components/card/CardItem";
+import { postSel } from "../../store/post";
 
 const HomePage = () => {
-  const item = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const dispatch = useDispatch();
+  const postData = useSelector(postSel.postData);
+
+  console.log("postData", postData);
+
+  useEffect(() => {
+    dispatch(PostApi.getAllPosts());
+  }, []);
 
   return (
     <>
@@ -13,9 +23,13 @@ const HomePage = () => {
         }}
       >
         <Row>
-          {item.map((item, i) => {
-            return <CardItem key={i} />;
-          })}
+          {postData.length ? (
+            postData.map((item, i) => {
+              return <CardItem key={i} post={item} />;
+            })
+          ) : (
+            <h2>Post Empty</h2>
+          )}
         </Row>
       </Container>
     </>
