@@ -1,7 +1,10 @@
 import React from "react";
 import { Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const CardItem = ({ post }) => {
+  console.log("post", post);
+
   return (
     <Col xs={12} sm={12} md={6} lg={4}>
       <div
@@ -14,18 +17,21 @@ const CardItem = ({ post }) => {
         }}
       >
         <Card>
-          <div
-            style={{
-              width: "100%",
-              height: "200px",
-              backgroundImage: `url(${post.avatar})`,
-              backgroundPosition: "center",
-              overflow: "hidden",
-              backgroundSize: "cover",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              backgroundBlendMode: "darken",
-            }}
-          ></div>
+          <Link to={`posts/${post._id}`}>
+            <div
+              style={{
+                width: "100%",
+                height: "200px",
+                backgroundImage: `url(${post.avatar})`,
+                backgroundPosition: "center",
+                overflow: "hidden",
+                backgroundSize: "cover",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                backgroundBlendMode: "darken",
+                cursor: "pointer",
+              }}
+            ></div>
+          </Link>
           <Card.Body>
             <Card.Title>{post.name}</Card.Title>
           </Card.Body>

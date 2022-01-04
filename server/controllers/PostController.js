@@ -23,10 +23,17 @@ class PostController {
   async getAllPosts(req, res) {
     try {
       const posts = await Post.find();
-
-      console.log("posts", posts);
-
       res.status(200).json(posts);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getPostById(req, res) {
+    try {
+      const { id } = req.params;
+      const post = await Post.findById(id);
+      res.status(200).json(post);
     } catch (error) {
       console.log(error);
     }

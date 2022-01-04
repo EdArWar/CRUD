@@ -16,7 +16,7 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(express.static("static"));
 
 app.use("/api/auth", AuthRoutes);
-app.use("/api/post", PostRoutes);
+app.use("/api/posts", PostRoutes);
 
 const start = async () => {
   try {

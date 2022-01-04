@@ -1,10 +1,26 @@
-import React from "react";
-import { Col, Container, FloatingLabel, Form, Row } from "react-bootstrap";
+import React, { useEffect } from "react";
+import {
+  Col,
+  Container,
+  FloatingLabel,
+  Form,
+  ListGroup,
+  ListGroupItem,
+  Row,
+} from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import PostApi from "../../api/PostApi";
+import { postSel } from "../../store/post";
 
 const PostDetails = () => {
   const { id } = useParams();
-  console.log("id", id);
+  const dispatch = useDispatch();
+  const post = useSelector(postSel.post);
+
+  useEffect(() => {
+    dispatch(PostApi.getPostById(id));
+  }, []);
 
   return (
     <Container
@@ -23,14 +39,17 @@ const PostDetails = () => {
         }}
       >
         <Col xs={8}>
-          <h2>Title</h2>
-          <p>Description</p>
-          <p>
-            Created by: <span>Edgar Vardanyan</span>
-          </p>
-          <p>2 hours ago</p>
-          <hr />
-          <strong>Realtime Chat - coming soon!</strong>
+          <h2>{post.name}</h2>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem>Clan: {post.clan}</ListGroupItem>
+            <ListGroupItem>
+              Organization: {post.organization || "Does not consist"}
+            </ListGroupItem>
+            <ListGroupItem>Profession: {post.profession}</ListGroupItem>
+            <ListGroupItem>Position: {post.position}</ListGroupItem>
+            <ListGroupItem>Creator ID: {post.creator}</ListGroupItem>
+            <ListGroupItem>CreatedAt: {post.createdAt}</ListGroupItem>
+          </ListGroup>
           <hr />
           <Row>
             <Col xs={4}>
@@ -51,20 +70,17 @@ const PostDetails = () => {
         <Col xs={4}>
           <div
             style={{
+              backgroundImage: `url(${post.avatar})`,
+              backgroundPosition: "center",
               overflow: "hidden",
+              backgroundSize: "cover",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              backgroundBlendMode: "darken",
               borderRadius: "30px",
-              background: "red",
-              width: "fit-content",
-              height: "fit-content",
+              width: "100%",
+              height: "600px",
             }}
-          >
-            <img
-              src="https://i.pinimg.com/originals/f0/a6/4e/f0a64e32194d341befecc80458707565.jpg"
-              alt=""
-              width={"100%"}
-              height={"auto"}
-            />
-          </div>
+          ></div>
         </Col>
       </Row>
     </Container>

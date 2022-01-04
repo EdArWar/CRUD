@@ -73,9 +73,7 @@ class UserController {
         });
       }
 
-      const token = jwt.sign({ id: user.id }, config.get("secretKey"), {
-        expiresIn: "10h",
-      });
+      const token = jwt.sign({ id: user.id }, config.get("secretKey"));
 
       return res.status(200).json({
         token,

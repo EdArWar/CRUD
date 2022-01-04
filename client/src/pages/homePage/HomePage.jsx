@@ -13,8 +13,6 @@ const HomePage = () => {
   const loader = useSelector(globalSel.loader);
   const postData = useSelector(postSel.postData);
 
-  console.log("postData", postData);
-
   useEffect(() => {
     dispatch(PostApi.getAllPosts());
   }, [isAuth]);
