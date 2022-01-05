@@ -7,11 +7,11 @@ const signInModal = createSelector(
   (modal) => modal.signInModal
 );
 
-const postUpdateModal = createSelector(
+const postUpdateModalState = createSelector(
   [modalSelector],
-  (modal) => modal.postUpdateModal
+  (modal) => modal.postUpdateModalState
 );
 
-const selectors = { signInModal, postUpdateModal };
+const selectors = { signInModal, postUpdateModalState };
 
 export default selectors;

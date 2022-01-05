@@ -1,4 +1,4 @@
 export const initialModalState = {
   signInModal: false,
-  postUpdateModal: false,
+  postUpdateModalState: { show: false, id: null },
 };

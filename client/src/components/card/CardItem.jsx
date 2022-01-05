@@ -8,7 +8,7 @@ const CardItem = ({ post }) => {
   const dispatch = useDispatch();
 
   const onUpdateClicked = () => {
-    dispatch(modalOp.handlePostUpdateState(true));
+    dispatch(modalOp.handlePostUpdateState({ show: true, id: post._id }));
   };
 
   return (

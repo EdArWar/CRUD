@@ -7,7 +7,7 @@ const PostUpdateModal = ({ show }) => {
   const dispatch = useDispatch();
 
   const onClose = () => {
-    dispatch(modalOp.handlePostUpdateState(false));
+    dispatch(modalOp.handlePostUpdateState({ show: false, id: null }));
   };
 
   return (

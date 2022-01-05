@@ -9,7 +9,7 @@ export const modalSlice = createSlice({
       state.signInModal = action.payload;
     },
     setPostUpdateModalState(state, action) {
-      state.postUpdateModal = action.payload;
+      state.postUpdateModalState = action.payload;
     },
   },
 });

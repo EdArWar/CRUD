@@ -4,10 +4,14 @@ import PostUpdateModal from "../modal/postUpdateModal/PostUpdateModal";
 import { modalSel } from "../store/modal";
 
 const LayoutModals = () => {
-  const postUpdateModal = useSelector(modalSel.postUpdateModal);
+  const postUpdateModalState = useSelector(modalSel.postUpdateModalState);
 
   return (
-    <div>{postUpdateModal && <PostUpdateModal show={postUpdateModal} />}</div>
+    <div>
+      {postUpdateModalState.show && (
+        <PostUpdateModal show={postUpdateModalState.show} />
+      )}
+    </div>
   );
 };
 
