@@ -5,8 +5,11 @@ export const modalSlice = createSlice({
   name: "modal",
   initialState: initialModalState,
   reducers: {
-    setSignInState(state, action) {
+    setSignInModalState(state, action) {
       state.signInModal = action.payload;
+    },
+    setPostUpdateModalState(state, action) {
+      state.postUpdateModal = action.payload;
     },
   },
 });

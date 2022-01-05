@@ -7,7 +7,6 @@ class PostApi {
   createPost(name, clan, organization, profession, position, avatar) {
     return async (dispatch) => {
       try {
-        console.log("createPost");
         const body = {
           name,
           clan,
@@ -17,13 +16,11 @@ class PostApi {
           avatar,
         };
 
-        const response = await axios.post(`${API}/api/posts/create`, body, {
+        await axios.post(`${API}/api/posts/create`, body, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-
-        console.log("response", response);
       } catch (error) {
         console.log(error);
       }

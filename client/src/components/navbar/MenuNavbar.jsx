@@ -16,7 +16,7 @@ const MenuNavbar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">CRUD</Navbar.Brand>
+        <CustomLink to="/">CRUD</CustomLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">

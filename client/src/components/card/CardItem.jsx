@@ -1,9 +1,15 @@
 import React from "react";
-import { Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { modalOp } from "../../store/modal";
 
 const CardItem = ({ post }) => {
-  console.log("post", post);
+  const dispatch = useDispatch();
+
+  const onUpdateClicked = () => {
+    dispatch(modalOp.handlePostUpdateState(true));
+  };
 
   return (
     <Col xs={12} sm={12} md={6} lg={4}>
@@ -45,9 +51,14 @@ const CardItem = ({ post }) => {
             <ListGroupItem>Creator ID: {post.creator.name}</ListGroupItem>
             <ListGroupItem>CreatedAt: {post.createdAt}</ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Like {post.likes}</Card.Link>
-            <Card.Link href="#">Update</Card.Link>
+          <Card.Body
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
+            <Button>Like {post.likes}</Button>
+            <Button onClick={onUpdateClicked}>Update</Button>
           </Card.Body>
         </Card>
       </div>
