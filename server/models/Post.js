@@ -6,7 +6,10 @@ const PostSchema = new Schema({
   organization: { type: String, default: "Does not consist" },
   profession: String,
   position: String,
-  creator: String,
+  creator: {
+    id: ObjectId,
+    name: String,
+  },
   avatar: String,
   likes: { type: [String], default: [] },
   createdAt: {

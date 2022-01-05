@@ -47,7 +47,7 @@ const PostDetails = () => {
             </ListGroupItem>
             <ListGroupItem>Profession: {post.profession}</ListGroupItem>
             <ListGroupItem>Position: {post.position}</ListGroupItem>
-            <ListGroupItem>Creator ID: {post.creator}</ListGroupItem>
+            <ListGroupItem>Creator ID: {post.creator.name}</ListGroupItem>
             <ListGroupItem>CreatedAt: {post.createdAt}</ListGroupItem>
           </ListGroup>
           <hr />

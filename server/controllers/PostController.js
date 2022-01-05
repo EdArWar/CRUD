@@ -1,15 +1,17 @@
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 class PostController {
   async createPost(req, res) {
     console.log("createPost");
 
     try {
-      const post = req.body;
+      const postBody = req.body;
+      const user = await User.findById(req.user.id);
 
       const newPost = new Post({
-        ...post,
-        creator: req.user.id,
+        ...postBody,
+        creator: { id: req.user.id, name: user.name },
         createAt: new Date().toISOString(),
       });
 
