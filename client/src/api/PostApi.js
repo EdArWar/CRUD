@@ -53,16 +53,22 @@ class PostApi {
   getPostById(id) {
     return async (dispatch) => {
       try {
-        const response = await fetch(`${API}/api/posts/${id}`, {
-          method: "GET",
+        // const response = await fetch(`${API}/api/posts/${id}`, {
+        //   method: "GET",
+        //   headers: {
+        //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+        //   },
+        // });
+
+        // const data = await response.json();
+
+        const response = await axios.get(`${API}/api/posts/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-
-        const data = await response.json();
-        dispatch(postOp.handlePostData(data));
-        console.log("data", data);
+        dispatch(postOp.handlePostData(response.data));
+        console.log("data", response.data);
       } catch (error) {
         console.log(error);
       }
