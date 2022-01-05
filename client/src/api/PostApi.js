@@ -50,7 +50,7 @@ class PostApi {
     };
   }
 
-  getPostById(id) {
+  getPostById(id, setSkeletonState) {
     return async (dispatch) => {
       try {
         // const response = await fetch(`${API}/api/posts/${id}`, {
@@ -68,9 +68,10 @@ class PostApi {
           },
         });
         dispatch(postOp.handlePostData(response.data));
-        console.log("data", response.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setSkeletonState(false);
       }
     };
   }
