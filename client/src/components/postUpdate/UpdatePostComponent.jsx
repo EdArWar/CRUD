@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Button, Form, Row } from "react-bootstrap";
 import FileBase from "react-file-base64";
+import { useSelector } from "react-redux";
+import { postSel } from "../../store/post";
 
 const UpdatePostComponent = () => {
-  const [name, setName] = useState("Naruto");
-  const [clan, setClan] = useState("Uzumaki");
-  const [organization, setOrganization] = useState("");
-  const [profession, setProfession] = useState("Shinobi");
-  const [position, setPosition] = useState("Hokage");
+  const post = useSelector(postSel.post);
+
+  const [name, setName] = useState(post.name);
+  const [clan, setClan] = useState(post.clan);
+  const [organization, setOrganization] = useState(post.organization);
+  const [profession, setProfession] = useState(post.profession);
+  const [position, setPosition] = useState(post.position);
   const [avatar, setAvatar] = useState("");
 
   const onCreateHandle = () => {
