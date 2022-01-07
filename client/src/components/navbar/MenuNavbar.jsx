@@ -9,7 +9,7 @@ import CustomLink from "../custom/link/CustomLink";
 
 const MenuNavbar = () => {
   const isAuth = useSelector(globalSel.isAuth);
-  const signInModal = useSelector(modalSel.signInModal);
+  const signInModalState = useSelector(modalSel.signInModalState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ const MenuNavbar = () => {
                   cursor: "pointer",
                 }}
                 onClick={() =>
-                  dispatch(modalOp.handleSignInState(!signInModal))
+                  dispatch(modalOp.handleSignInState(!signInModalState))
                 }
               >
                 Login

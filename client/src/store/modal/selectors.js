@@ -2,9 +2,9 @@ import { createSelector } from "reselect";
 
 const modalSelector = (state) => state.modal;
 
-const signInModal = createSelector(
+const signInModalState = createSelector(
   [modalSelector],
-  (modal) => modal.signInModal
+  (modal) => modal.signInModalState
 );
 
 const postUpdateModalState = createSelector(
@@ -12,6 +12,6 @@ const postUpdateModalState = createSelector(
   (modal) => modal.postUpdateModalState
 );
 
-const selectors = { signInModal, postUpdateModalState };
+const selectors = { signInModalState, postUpdateModalState };
 
 export default selectors;

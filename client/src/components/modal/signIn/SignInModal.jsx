@@ -1,16 +1,15 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { modalOp, modalSel } from "../../../store/modal";
+import { useDispatch } from "react-redux";
+import { modalOp } from "../../../store/modal";
 import SignIn from "../../signIn/SignIn";
 import ModalCustom from "../ModalCustom";
 
-const SignInModal = () => {
-  const signInModal = useSelector(modalSel.signInModal);
-
+const SignInModal = ({ show }) => {
   const dispatch = useDispatch();
+
   return (
     <ModalCustom
-      show={signInModal}
+      show={show}
       onHide={() => {
         dispatch(modalOp.handleSignInState(false));
       }}

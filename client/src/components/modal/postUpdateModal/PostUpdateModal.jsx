@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { modalOp } from "../../store/modal";
-import MyModal from "../MyModal";
+import { modalOp } from "../../../store/modal";
+import UpdatePostComponent from "../../postUpdate/UpdatePostComponent";
+import ModalCustom from "../ModalCustom";
 
 const PostUpdateModal = ({ show }) => {
   const dispatch = useDispatch();
@@ -12,7 +13,9 @@ const PostUpdateModal = ({ show }) => {
 
   return (
     <>
-      <MyModal show={show} handleClose={onClose} />
+      <ModalCustom show={show} onHide={onClose} title="Update Post">
+        <UpdatePostComponent />
+      </ModalCustom>
     </>
   );
 };

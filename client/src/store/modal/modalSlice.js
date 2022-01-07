@@ -6,7 +6,7 @@ export const modalSlice = createSlice({
   initialState: initialModalState,
   reducers: {
     setSignInModalState(state, action) {
-      state.signInModal = action.payload;
+      state.signInModalState = action.payload;
     },
     setPostUpdateModalState(state, action) {
       state.postUpdateModalState = action.payload;
