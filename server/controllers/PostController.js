@@ -40,6 +40,17 @@ class PostController {
       console.log(error);
     }
   }
+
+  async updatePost(req, res) {
+    try {
+      const { id, ...rest } = req.body;
+      const updatePost = await Post.findByIdAndUpdate(id, rest);
+      res.json(updatePost);
+      res.end();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = new PostController();

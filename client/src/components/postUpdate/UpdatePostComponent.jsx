@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Button, Form, Row } from "react-bootstrap";
 import FileBase from "react-file-base64";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import PostApi from "../../api/PostApi";
 import { postSel } from "../../store/post";
 
 const UpdatePostComponent = () => {
+  const dispatch = useDispatch();
   const post = useSelector(postSel.post);
 
   const [name, setName] = useState(post.name);
@@ -12,10 +14,20 @@ const UpdatePostComponent = () => {
   const [organization, setOrganization] = useState(post.organization);
   const [profession, setProfession] = useState(post.profession);
   const [position, setPosition] = useState(post.position);
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState(post.avatar);
 
   const onCreateHandle = () => {
-    //
+    dispatch(
+      PostApi.updatePost(
+        post._id,
+        name,
+        clan,
+        organization,
+        profession,
+        position,
+        avatar
+      )
+    );
   };
 
   return (

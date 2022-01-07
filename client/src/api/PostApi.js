@@ -72,6 +72,34 @@ class PostApi {
       }
     };
   }
+
+  updatePost(id, name, clan, organization, profession, position, avatar) {
+    return async (dispatch) => {
+      try {
+        const body = {
+          id,
+          name,
+          clan,
+          organization,
+          profession,
+          position,
+          avatar,
+        };
+
+        const response = await axios.patch(`${API}/api/posts/update`, body, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        console.log("response", response);
+
+        const data = response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }
 }
 
 export default new PostApi();
