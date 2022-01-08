@@ -37,7 +37,7 @@ class PostApi {
           },
         });
         if (response.status === 200) {
-          dispatch(postOp.handlePostsData(response.data));
+          dispatch(postOp.handleSetAllPost(response.data));
         }
       } catch (error) {
         console.log(error);

@@ -1,4 +1,4 @@
 export const initialPostState = {
-  postData: [],
+  postsData: [],
   post: [],
 };

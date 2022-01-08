@@ -11,7 +11,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(globalSel.isAuth);
   const loader = useSelector(globalSel.loader);
-  const postData = useSelector(postSel.postData);
+  const postsData = useSelector(postSel.postsData);
 
   useEffect(() => {
     dispatch(PostApi.getAllPosts());
@@ -26,8 +26,8 @@ const HomePage = () => {
           }}
         >
           <Row>
-            {postData.length ? (
-              postData.map((item, i) => {
+            {postsData.length ? (
+              postsData.map((item, i) => {
                 return <CardItem key={i} post={item} />;
               })
             ) : (

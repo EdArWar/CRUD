@@ -1,15 +1,15 @@
 import { postSlice } from "./postSlice";
 
-const { setPostsData, setPost } = postSlice.actions;
+const { setAllPost, setPost } = postSlice.actions;
 
-const handlePostsData = (state) => (dispatch) => {
-  dispatch(setPostsData(state));
+const handleSetAllPost = (state) => (dispatch) => {
+  dispatch(setAllPost(state));
 };
 
 const handlePostData = (state) => (dispatch) => {
   dispatch(setPost(state));
 };
 
-const operations = { handlePostsData, handlePostData };
+const operations = { handleSetAllPost, handlePostData };
 
 export default operations;
