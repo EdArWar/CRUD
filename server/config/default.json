@@ -1,5 +1,5 @@
 {
   "PORT": 3001,
-  "dbUrl": "mongodb+srv://edward:edward123@cluster0.ezard.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "dbUrl": "mongodb+srv://edward:edward123@cluster0.ezard.mongodb.net/crud",
   "secretKey": "CRUD_project"
 }

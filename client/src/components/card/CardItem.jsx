@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import { Button, Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useDispatch } from "react-redux";
@@ -51,7 +52,9 @@ const CardItem = ({ post }) => {
             <ListGroupItem>Profession: {post.profession}</ListGroupItem>
             <ListGroupItem>Position: {post.position}</ListGroupItem>
             <ListGroupItem>Creator ID: {post.creator.name}</ListGroupItem>
-            <ListGroupItem>CreatedAt: {post.createdAt}</ListGroupItem>
+            <ListGroupItem>
+              CreatedAt: {moment(post.createdAt).fromNow()}
+            </ListGroupItem>
           </ListGroup>
           <Card.Body
             style={{

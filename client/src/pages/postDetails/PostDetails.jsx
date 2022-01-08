@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import {
   Col,
@@ -13,7 +14,6 @@ import { useParams } from "react-router-dom";
 import PostApi from "../../api/PostApi";
 import { postSel } from "../../store/post";
 import Loader from "./../../components/loader/Loader";
-
 const PostDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -54,8 +54,11 @@ const PostDetails = () => {
                 </ListGroupItem>
                 <ListGroupItem>Profession: {post.profession}</ListGroupItem>
                 <ListGroupItem>Position: {post.position}</ListGroupItem>
+
                 <ListGroupItem>Creator ID: {post?.creator?.name}</ListGroupItem>
-                <ListGroupItem>CreatedAt: {post.createdAt}</ListGroupItem>
+                <ListGroupItem>
+                  CreatedAt: {moment(post.createdAt).fromNow()}
+                </ListGroupItem>
               </ListGroup>
               <hr />
               <Row>
