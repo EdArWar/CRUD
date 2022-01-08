@@ -13,6 +13,11 @@ const isRegistered = createSelector(
   (global) => global.isRegistered
 );
 
-const selectors = { isAuth, loader, token, isRegistered };
+const updatePost = createSelector(
+  [globalSelector],
+  (global) => global.updatePost
+);
+
+const selectors = { isAuth, loader, token, isRegistered, updatePost };
 
 export default selectors;

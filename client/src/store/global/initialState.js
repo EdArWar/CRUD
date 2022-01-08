@@ -3,4 +3,5 @@ export const initialGlobalState = {
   loader: false,
   token: false,
   isRegistered: false,
+  updatePost: null,
 };

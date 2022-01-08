@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { globalOp } from "../../../store/global";
 import { modalOp } from "../../../store/modal";
-import { postOp } from "../../../store/post";
 import UpdatePostComponent from "../../postUpdate/UpdatePostComponent";
 import ModalCustom from "../ModalCustom";
 
@@ -10,7 +10,7 @@ const PostUpdateModal = ({ show }) => {
 
   const onClose = () => {
     dispatch(modalOp.handlePostUpdateState({ show: false, id: null }));
-    dispatch(postOp.handlePostData([]));
+    dispatch(globalOp.handleSetUpdatePost([]));
   };
 
   return (

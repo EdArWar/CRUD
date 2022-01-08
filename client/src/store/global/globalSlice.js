@@ -17,5 +17,8 @@ export const globalSlice = createSlice({
     setRegistration(state, action) {
       state.isRegistered = action.payload;
     },
+    setUpdatePost(state, action) {
+      state.updatePost = action.payload;
+    },
   },
 });

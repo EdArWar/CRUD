@@ -3,14 +3,14 @@ import React from "react";
 import { Button, Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { globalOp } from "../../store/global";
 import { modalOp } from "../../store/modal";
-import { postOp } from "../../store/post";
 
 const CardItem = ({ post }) => {
   const dispatch = useDispatch();
 
   const onUpdateClicked = () => {
-    dispatch(postOp.handlePostData(post));
+    dispatch(globalOp.handleSetUpdatePost(post));
     dispatch(modalOp.handlePostUpdateState({ show: true, id: post._id }));
   };
 

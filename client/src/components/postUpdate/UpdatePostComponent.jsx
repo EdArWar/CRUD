@@ -3,23 +3,23 @@ import { Button, Form, Row } from "react-bootstrap";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import PostApi from "../../api/PostApi";
-import { postSel } from "../../store/post";
+import { globalSel } from "../../store/global";
 
 const UpdatePostComponent = () => {
   const dispatch = useDispatch();
-  const post = useSelector(postSel.post);
+  const updatePost = useSelector(globalSel.updatePost);
 
-  const [name, setName] = useState(post.name);
-  const [clan, setClan] = useState(post.clan);
-  const [organization, setOrganization] = useState(post.organization);
-  const [profession, setProfession] = useState(post.profession);
-  const [position, setPosition] = useState(post.position);
-  const [avatar, setAvatar] = useState(post.avatar);
+  const [name, setName] = useState(updatePost.name);
+  const [clan, setClan] = useState(updatePost.clan);
+  const [organization, setOrganization] = useState(updatePost.organization);
+  const [profession, setProfession] = useState(updatePost.profession);
+  const [position, setPosition] = useState(updatePost.position);
+  const [avatar, setAvatar] = useState(updatePost.avatar);
 
   const onCreateHandle = () => {
     dispatch(
       PostApi.updatePost(
-        post._id,
+        updatePost._id,
         name,
         clan,
         organization,
