@@ -1,5 +1,6 @@
 import axios from "axios";
 import { globalOp } from "../store/global";
+import { modalOp } from "../store/modal";
 import { postOp } from "../store/post";
 import { API } from "./API";
 
@@ -93,6 +94,7 @@ class PostApi {
         });
 
         console.log("response", response);
+        dispatch(modalOp.handlePostUpdateState({ show: false, id: null }));
 
         const data = response.data;
       } catch (error) {
