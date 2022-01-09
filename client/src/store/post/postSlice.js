@@ -8,8 +8,8 @@ export const postSlice = createSlice({
     setAllPost(state, action) {
       state.postsData = action.payload;
     },
-    // setPost(state, action) {
-    //   state.post = action.payload;
-    // },
+    setPostDetails(state, action) {
+      state.postDetails = action.payload;
+    },
   },
 });

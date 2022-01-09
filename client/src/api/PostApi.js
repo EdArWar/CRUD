@@ -65,7 +65,7 @@ class PostApi {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        dispatch(postOp.handlePostData(response.data));
+        dispatch(postOp.handlePostDetailsData(response.data));
       } catch (error) {
         console.log(error);
       } finally {
