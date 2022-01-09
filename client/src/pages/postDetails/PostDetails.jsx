@@ -17,7 +17,7 @@ import Loader from "./../../components/loader/Loader";
 const PostDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const post = useSelector(postSel.post);
+  const post = useSelector(postSel.postDetails);
 
   const [skeletonState, setSkeletonState] = useState(true);
 
