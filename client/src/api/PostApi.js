@@ -74,8 +74,18 @@ class PostApi {
     };
   }
 
-  updatePost(id, name, clan, organization, profession, position, avatar) {
+  updatePost(
+    id,
+    name,
+    clan,
+    organization,
+    profession,
+    position,
+    avatar,
+    setUpdateButtonState
+  ) {
     return async (dispatch) => {
+      setUpdateButtonState(true);
       try {
         const body = {
           id,
@@ -93,12 +103,15 @@ class PostApi {
           },
         });
 
-        console.log("response", response);
         dispatch(modalOp.handlePostUpdateState({ show: false, id: null }));
 
         const data = response.data;
+
+        dispatch(postOp.handleUpdatePost(data));
       } catch (error) {
         console.log(error);
+      } finally {
+        setUpdateButtonState(false);
       }
     };
   }

@@ -9,6 +9,8 @@ const UpdatePostComponent = () => {
   const dispatch = useDispatch();
   const updatePost = useSelector(globalSel.updatePost);
 
+  const [updateButtonState, setUpdateButtonState] = useState(false);
+
   const [name, setName] = useState(updatePost.name);
   const [clan, setClan] = useState(updatePost.clan);
   const [organization, setOrganization] = useState(updatePost.organization);
@@ -25,7 +27,8 @@ const UpdatePostComponent = () => {
         organization,
         profession,
         position,
-        avatar
+        avatar,
+        setUpdateButtonState
       )
     );
   };
@@ -94,7 +97,11 @@ const UpdatePostComponent = () => {
           />
         </Row>
       </Form.Group>
-      <Button variant="primary" onClick={onCreateHandle}>
+      <Button
+        variant="primary"
+        onClick={onCreateHandle}
+        disabled={updateButtonState}
+      >
         Submit
       </Button>
     </>

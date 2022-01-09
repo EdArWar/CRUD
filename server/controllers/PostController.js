@@ -43,10 +43,21 @@ class PostController {
 
   async updatePost(req, res) {
     try {
-      const { id, ...rest } = req.body;
-      const updatePost = await Post.findByIdAndUpdate(id, rest);
-      res.json(updatePost);
-      res.end();
+      const { id, name, clan, organization, profession, position, avatar } =
+        req.body;
+      const updatePost = await Post.findByIdAndUpdate(
+        id,
+        {
+          name: name,
+          clan,
+          organization,
+          profession,
+          position,
+          avatar,
+        },
+        { new: true }
+      );
+      res.status(200).json(updatePost);
     } catch (error) {
       console.log(error);
     }
