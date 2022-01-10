@@ -11,5 +11,8 @@ export const modalSlice = createSlice({
     setPostUpdateModalState(state, action) {
       state.postUpdateModalState = action.payload;
     },
+    setRemovePostModalState(state, action) {
+      state.removePostModalState = action.payload;
+    },
   },
 });

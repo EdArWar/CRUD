@@ -4,12 +4,12 @@ import { modalOp } from "../../../store/modal";
 import SignIn from "../../signIn/SignIn";
 import ModalCustom from "../ModalCustom";
 
-const SignInModal = ({ show }) => {
+const SignInModal = () => {
   const dispatch = useDispatch();
 
   return (
     <ModalCustom
-      show={show}
+      show={true}
       onHide={() => {
         dispatch(modalOp.handleSignInState(false));
       }}

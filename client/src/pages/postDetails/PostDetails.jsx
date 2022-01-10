@@ -9,11 +9,14 @@ import {
   ListGroupItem,
   Row,
 } from "react-bootstrap";
+import { MdDisabledByDefault } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import PostApi from "../../api/PostApi";
+import { modalOp } from "../../store/modal";
 import { postSel } from "../../store/post";
 import Loader from "./../../components/loader/Loader";
+
 const PostDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -40,11 +43,36 @@ const PostDetails = () => {
           <Row
             style={{
               borderRadius: "30px",
-              padding: "3% 25px",
+              padding: "1.5% 25px 3% 25px",
               boxShadow:
                 "0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%)",
             }}
           >
+            <Row
+              style={{
+                display: "flex",
+                justifyContent: "flex-start",
+                marginBottom: "2%",
+              }}
+            >
+              <div>
+                <MdDisabledByDefault
+                  size={30}
+                  color="blue"
+                  style={{
+                    cursor: "Pointer",
+                  }}
+                  onClick={() =>
+                    dispatch(
+                      modalOp.handleRemovePostModalState({
+                        show: true,
+                        id: post._id,
+                      })
+                    )
+                  }
+                />
+              </div>
+            </Row>
             <Col xs={8}>
               <h2>{post.name}</h2>
               <ListGroup className="list-group-flush">

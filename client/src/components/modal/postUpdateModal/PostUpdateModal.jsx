@@ -5,7 +5,7 @@ import { modalOp } from "../../../store/modal";
 import UpdatePostComponent from "../../postUpdate/UpdatePostComponent";
 import ModalCustom from "../ModalCustom";
 
-const PostUpdateModal = ({ show }) => {
+const PostUpdateModal = () => {
   const dispatch = useDispatch();
 
   const onClose = () => {
@@ -15,7 +15,7 @@ const PostUpdateModal = ({ show }) => {
 
   return (
     <>
-      <ModalCustom show={show} onHide={onClose} title="Update Post">
+      <ModalCustom show={true} onHide={onClose} title="Update Post">
         <UpdatePostComponent />
       </ModalCustom>
     </>
