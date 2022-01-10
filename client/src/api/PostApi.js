@@ -115,6 +115,25 @@ class PostApi {
       }
     };
   }
+
+  removePost(id, redirectHomePage) {
+    return async (dispatch) => {
+      try {
+        const response = await axios.delete(`${API}/api/posts/${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        if (response.status === 200) {
+          dispatch(modalOp.handleRemovePostModalState(false));
+          redirectHomePage();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }
 }
 
 export default new PostApi();

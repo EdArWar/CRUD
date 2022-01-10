@@ -2,14 +2,25 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { BsFillTrashFill, BsFillXCircleFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import PostApi from "../../../api/PostApi";
 import { modalOp } from "../../../store/modal";
 import { postSel } from "../../../store/post";
 import ModalCustom from "../ModalCustom";
 
 const RemovePost = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const postDetails = useSelector(postSel.postDetails);
+
+  const redirectHomePage = () => {
+    navigate("/", { replace: true });
+  };
+
+  const onRemovePost = () => {
+    dispatch(PostApi.removePost(postDetails._id, redirectHomePage));
+  };
 
   return (
     <ModalCustom
@@ -51,6 +62,7 @@ const RemovePost = () => {
               marginLeft: "15px",
             }}
             variant="danger"
+            onClick={onRemovePost}
           >
             <BsFillTrashFill />
           </Button>

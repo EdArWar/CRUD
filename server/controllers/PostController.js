@@ -1,10 +1,9 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
+const mongoose = require("mongoose");
 
 class PostController {
   async createPost(req, res) {
-    console.log("createPost");
-
     try {
       const postBody = req.body;
       const user = await User.findById(req.user.id);
@@ -58,6 +57,20 @@ class PostController {
         { new: true }
       );
       res.status(200).json(updatePost);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async removePost(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (!mongoose.Types.ObjectId.isValid(id))
+        return res.status(404).send(`No post with id: ${id}`);
+
+      await Post.findByIdAndDelete(id);
+      res.status(200).json({ message: "Post deleted successfully." });
     } catch (error) {
       console.log(error);
     }
