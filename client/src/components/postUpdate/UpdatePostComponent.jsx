@@ -86,6 +86,14 @@ const UpdatePostComponent = () => {
         />
       </Form.Group>
       <Form.Group controlId="formFile" className="mb-3">
+        <div
+          style={{
+            width: "100px",
+            height: "auto",
+          }}
+        >
+          <img src={avatar} width="100%" />
+        </div>
         <Form.Label>Picture</Form.Label>
         <Row>
           <FileBase
