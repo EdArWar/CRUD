@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,11 +12,11 @@ const CreatePage = () => {
   const isAuth = useSelector(globalSel.isAuth);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!isAuth) {
-      navigate("/", { replace: true });
-    }
-  }, [isAuth]);
+  // useEffect(() => {
+  //   if (!isAuth) {
+  //     navigate("/", { replace: true });
+  //   }
+  // }, [isAuth]);
 
   const [name, setName] = useState("Naruto");
   const [clan, setClan] = useState("Uzumaki");
