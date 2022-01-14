@@ -7,7 +7,6 @@ const handleSetMessageState = (state) => (dispatch) => {
 };
 
 const handleResponseTypeState = (state) => (dispatch) => {
-  console.log("handleResponseTypeState");
   dispatch(setResponseType(state));
 };
 
