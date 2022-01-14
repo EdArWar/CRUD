@@ -134,6 +134,28 @@ class PostApi {
       }
     };
   }
+
+  likePost_api(id) {
+    return async (dispatch) => {
+      try {
+        const response = await axios.patch(
+          `${API}/api/posts/${id}/likePost`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+
+        const postData = response.data;
+
+        dispatch(postOp.handleUpdatePost(postData));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }
 }
 
 export default new PostApi();

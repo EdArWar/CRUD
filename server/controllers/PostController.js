@@ -75,6 +75,32 @@ class PostController {
       console.log(error);
     }
   }
+
+  async likePost(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (!req.user.id) {
+        return req.json({ message: "Unauthenticated" });
+      }
+
+      const post = await Post.findById(id);
+
+      const index = post.likes.findIndex((id) => id === String(req.user.id));
+
+      if (index === -1) {
+        post.likes.push(req.user.id);
+      } else {
+        post.likes = post.likes.filter((id) => id !== String(req.user.id));
+      }
+
+      const updatePost = await Post.findByIdAndUpdate(id, post, { new: true });
+
+      res.status(200).json(updatePost);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = new PostController();

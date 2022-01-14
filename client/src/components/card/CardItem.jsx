@@ -3,6 +3,7 @@ import React from "react";
 import { Button, Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import PostApi from "../../api/PostApi";
 import { globalOp } from "../../store/global";
 import { modalOp } from "../../store/modal";
 
@@ -15,7 +16,7 @@ const CardItem = ({ post }) => {
   };
 
   const onLikeClicked = () => {
-    // dispatch(PostApi.likePost(post._id));
+    dispatch(PostApi.likePost_api(post._id));
   };
 
   return (
@@ -73,10 +74,9 @@ const CardItem = ({ post }) => {
                 alignItems: "center",
               }}
             >
-              <Button variant="link" onClick={onLikeClicked}>
-                Like
+              <Button onClick={onLikeClicked}>
+                Like <span>{post.likes.length || ""}</span>
               </Button>
-              <span>{post.likes}</span>
             </div>
             <Button onClick={onUpdateClicked}>Update</Button>
           </Card.Body>

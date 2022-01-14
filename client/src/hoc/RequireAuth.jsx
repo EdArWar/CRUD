@@ -6,7 +6,6 @@ import { globalSel } from "../store/global";
 const RequireAuth = ({ children }) => {
   const location = useLocation();
   const isAuth = useSelector(globalSel.isAuth);
-  console.log("isAuth", isAuth);
 
   if (!isAuth) {
     return <Navigate to="/" state={{ from: location }} />;
