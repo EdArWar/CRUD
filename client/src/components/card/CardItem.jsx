@@ -14,6 +14,10 @@ const CardItem = ({ post }) => {
     dispatch(modalOp.handlePostUpdateState({ show: true, id: post._id }));
   };
 
+  const onLikeClicked = () => {
+    // dispatch(PostApi.likePost(post._id));
+  };
+
   return (
     <Col xs={12} sm={12} md={6} lg={4}>
       <div
@@ -62,7 +66,18 @@ const CardItem = ({ post }) => {
               justifyContent: "space-around",
             }}
           >
-            <Button>Like {post.likes}</Button>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Button variant="link" onClick={onLikeClicked}>
+                Like
+              </Button>
+              <span>{post.likes}</span>
+            </div>
             <Button onClick={onUpdateClicked}>Update</Button>
           </Card.Body>
         </Card>

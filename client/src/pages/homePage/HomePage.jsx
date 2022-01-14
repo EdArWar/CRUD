@@ -14,7 +14,7 @@ const HomePage = () => {
   const postsData = useSelector(postSel.postsData);
 
   useEffect(() => {
-    dispatch(PostApi.getAllPosts());
+    dispatch(PostApi.getAllPosts_api());
   }, [isAuth]);
 
   return (

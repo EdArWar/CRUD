@@ -27,7 +27,14 @@ const CreatePage = () => {
 
   const onCreateHandle = () => {
     dispatch(
-      PostApi.createPost(name, clan, organization, profession, position, avatar)
+      PostApi.createPost_api(
+        name,
+        clan,
+        organization,
+        profession,
+        position,
+        avatar
+      )
     );
   };
 

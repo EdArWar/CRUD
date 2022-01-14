@@ -5,7 +5,7 @@ import { postOp } from "../store/post";
 import { API } from "./API";
 
 class PostApi {
-  createPost(name, clan, organization, profession, position, avatar) {
+  createPost_api(name, clan, organization, profession, position, avatar) {
     return async (dispatch) => {
       try {
         const body = {
@@ -28,7 +28,7 @@ class PostApi {
     };
   }
 
-  getAllPosts() {
+  getAllPosts_api() {
     return async (dispatch) => {
       try {
         dispatch(globalOp.handleLoaderState(true));
@@ -48,7 +48,7 @@ class PostApi {
     };
   }
 
-  getPostById(id, setSkeletonState) {
+  getPostById_api(id, setSkeletonState) {
     return async (dispatch) => {
       try {
         // const response = await fetch(`${API}/api/posts/${id}`, {
@@ -74,7 +74,7 @@ class PostApi {
     };
   }
 
-  updatePost(
+  updatePost_api(
     id,
     name,
     clan,
@@ -116,7 +116,7 @@ class PostApi {
     };
   }
 
-  removePost(id, redirectHomePage) {
+  removePost_api(id, redirectHomePage) {
     return async (dispatch) => {
       try {
         const response = await axios.delete(`${API}/api/posts/${id}`, {

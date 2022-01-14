@@ -25,7 +25,7 @@ const PostDetails = () => {
   const [skeletonState, setSkeletonState] = useState(true);
 
   useEffect(() => {
-    dispatch(PostApi.getPostById(id, setSkeletonState));
+    dispatch(PostApi.getPostById_api(id, setSkeletonState));
   }, []);
 
   return (

@@ -20,7 +20,7 @@ const UpdatePostComponent = () => {
 
   const onCreateHandle = () => {
     dispatch(
-      PostApi.updatePost(
+      PostApi.updatePost_api(
         updatePost._id,
         name,
         clan,

@@ -19,7 +19,7 @@ const RemovePost = () => {
   };
 
   const onRemovePost = () => {
-    dispatch(PostApi.removePost(postDetails._id, redirectHomePage));
+    dispatch(PostApi.removePost_api(postDetails._id, redirectHomePage));
   };
 
   return (
