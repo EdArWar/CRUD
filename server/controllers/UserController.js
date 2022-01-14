@@ -56,7 +56,8 @@ class UserController {
       const user = await User.findOne({ email });
 
       if (!user) {
-        return res.status(404).json({
+        console.log("login 1");
+        return res.json({
           errorStatus: true,
           message: `User with ${email} not found !`,
           responseType: RequestTypes.INFO,
@@ -66,7 +67,8 @@ class UserController {
       const isPassValid = bcrypt.compareSync(password, user.password);
 
       if (!isPassValid) {
-        return res.status(400).json({
+        console.log("login 2");
+        return res.json({
           errorStatus: true,
           message: `Invalid password`,
           responseType: RequestTypes.INFO,

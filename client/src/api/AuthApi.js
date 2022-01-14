@@ -1,5 +1,6 @@
 import axios from "axios";
 import { globalOp } from "../store/global";
+import { messageOp } from "../store/message";
 import { modalOp } from "../store/modal";
 import { userOp } from "../store/user";
 import { API } from "./API";
@@ -31,6 +32,8 @@ class AuthApi {
         if (!data.errorStatus) {
           dispatch(globalOp.handleRegisteredState(false));
         }
+        dispatch(messageOp.handleSetMessageState(data.message));
+        dispatch(messageOp.handleResponseTypeState(data.responseType));
       } catch (error) {
         console.log(error);
       }
@@ -45,15 +48,20 @@ class AuthApi {
           password,
         });
 
-        if (response.status === 200) {
-          const token = response.data.token;
-          const userData = response.data.user;
+        const data = response.data;
+        const userData = data.user;
+
+        if (!data.errorStatus) {
+          const token = data.token;
           dispatch(globalOp.handleTokenState(token));
           dispatch(globalOp.handleAuthState(true));
           dispatch(userOp.handleSetUserData(userData));
           localStorage.setItem("token", token);
           dispatch(modalOp.handleSignInState(false));
         }
+
+        dispatch(messageOp.handleSetMessageState(data.message));
+        dispatch(messageOp.handleResponseTypeState(data.responseType));
       } catch (error) {
         console.log(error);
       }

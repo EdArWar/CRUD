@@ -1,16 +1,39 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "../hoc/RequireAuth";
 import CreatePage from "../pages/createPage/CreatePage";
 import HomePage from "../pages/homePage/HomePage";
 import PostDetails from "../pages/postDetails/PostDetails";
-import { globalSel } from "../store/global";
+import { messageOp, messageSel } from "../store/message";
 import Layout from "./../layout/Layout";
 import NotFoundPage from "./../pages/404/NotFoundPage";
+import { Response_Type } from "./../variable/ResponseType";
 
 const PageRoutes = () => {
-  const isAuth = useSelector(globalSel.isAuth);
+  const alert = useAlert();
+  const dispatch = useDispatch();
+
+  const responseType = useSelector(messageSel.responseType);
+  const message = useSelector(messageSel.message);
+
+  useEffect(() => {
+    if (responseType) {
+      if (responseType === Response_Type.SUCCESS) {
+        alert.success(message);
+      } else if (responseType === Response_Type.INFO) {
+        alert.show(message);
+      } else if (responseType === Response_Type.ERROR) {
+        alert.error(message);
+      }
+
+      setTimeout(() => {
+        dispatch(messageOp.handleSetMessageState(null));
+        dispatch(messageOp.handleResponseTypeState(null));
+      }, 5000);
+    }
+  }, [responseType]);
 
   return (
     <Routes>

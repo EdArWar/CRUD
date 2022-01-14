@@ -38,3 +38,9 @@
     transform: rotate(360deg);
   }
 }
+#__react-alert__ div div div {
+  width: auto !important;
+}
+#__react-alert__ div div div button {
+  width: fit-content;
+}
