@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Row } from "react-bootstrap";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +17,17 @@ const UpdatePostComponent = () => {
   const [profession, setProfession] = useState(updatePost.profession);
   const [position, setPosition] = useState(updatePost.position);
   const [avatar, setAvatar] = useState(updatePost.avatar);
+
+  useEffect(() => {
+    return () => {
+      setName("");
+      setClan("");
+      setOrganization("");
+      setProfession("");
+      setPosition("");
+      setAvatar("");
+    };
+  }, []);
 
   const onCreateHandle = () => {
     dispatch(
