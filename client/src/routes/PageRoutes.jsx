@@ -42,6 +42,7 @@ const PageRoutes = () => {
         <Route path="home" element={<HomePage />} />
         <Route
           path="create"
+          replace
           element={
             <RequireAuth>
               <CreatePage />

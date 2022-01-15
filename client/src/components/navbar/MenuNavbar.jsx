@@ -21,7 +21,7 @@ const MenuNavbar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <CustomLink to="/">Home</CustomLink>
-            <CustomLink to="/create">Create</CustomLink>
+            {isAuth && <CustomLink to="/create">Create</CustomLink>}
           </Nav>
           <Nav>
             {!!isAuth ? (
