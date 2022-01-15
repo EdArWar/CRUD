@@ -1,14 +1,23 @@
 import moment from "moment";
 import React from "react";
-import { Button, Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import {
+  Button,
+  Card,
+  Col,
+  ListGroup,
+  ListGroupItem,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import PostApi from "../../api/PostApi";
-import { globalOp } from "../../store/global";
+import { globalOp, globalSel } from "../../store/global";
 import { modalOp } from "../../store/modal";
 
 const CardItem = ({ post }) => {
   const dispatch = useDispatch();
+  const isAuth = useSelector(globalSel.isAuth);
 
   const onUpdateClicked = () => {
     dispatch(globalOp.handleSetUpdatePost(post));
@@ -74,9 +83,34 @@ const CardItem = ({ post }) => {
                 alignItems: "center",
               }}
             >
-              <Button onClick={onLikeClicked}>
-                Like <span>{post.likes.length || ""}</span>
-              </Button>
+              <OverlayTrigger
+                overlay={
+                  <Tooltip
+                    id="tooltip-disabled"
+                    style={{ display: isAuth ? "none" : "unset" }}
+                  >
+                    You must be a registered user
+                  </Tooltip>
+                }
+              >
+                <span className="d-inline-block">
+                  <Button
+                    variant="link"
+                    disabled={!isAuth}
+                    onClick={onLikeClicked}
+                  >
+                    Like
+                  </Button>
+                </span>
+              </OverlayTrigger>
+              <span
+                style={{
+                  fontSize: "18px",
+                  padding: "2px",
+                }}
+              >
+                {post.likes.length || ""}
+              </span>
             </div>
             <Button onClick={onUpdateClicked}>Update</Button>
           </Card.Body>
