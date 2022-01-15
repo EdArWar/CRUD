@@ -28,7 +28,7 @@ class PostController {
   async getAllPosts(req, res) {
     try {
       const posts = await Post.find();
-      res.status(200).json(posts);
+      res.status(200).json(posts.reverse());
     } catch (error) {
       console.log(error);
     }
