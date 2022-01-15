@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const RequestTypes = require("../types/RequestTypes");
 const User = require("../models/User");
 const mongoose = require("mongoose");
 
@@ -15,7 +16,10 @@ class PostController {
       });
 
       await newPost.save();
-      res.status(201).json(newPost);
+      res.status(200).json({
+        message: "Post Created",
+        responseType: RequestTypes.SUCCESS,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +60,11 @@ class PostController {
         },
         { new: true }
       );
-      res.status(200).json(updatePost);
+      res.status(200).json({
+        message: "Post Updated ",
+        responseType: RequestTypes.SUCCESS,
+        updatePost,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +78,10 @@ class PostController {
         return res.status(404).send(`No post with id: ${id}`);
 
       await Post.findByIdAndDelete(id);
-      res.status(200).json({ message: "Post deleted successfully." });
+      res.status(200).json({
+        responseType: RequestTypes.SUCCESS,
+        message: "Post deleted successfully.",
+      });
     } catch (error) {
       console.log(error);
     }

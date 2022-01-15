@@ -1,5 +1,6 @@
 import axios from "axios";
 import { globalOp } from "../store/global";
+import { messageOp } from "../store/message";
 import { modalOp } from "../store/modal";
 import { postOp } from "../store/post";
 import { API } from "./API";
@@ -17,11 +18,18 @@ class PostApi {
           avatar,
         };
 
-        await axios.post(`${API}/api/posts/create`, body, {
+        const response = await axios.post(`${API}/api/posts/create`, body, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
+
+        const data = response.data;
+
+        if (response.status === 200) {
+          dispatch(messageOp.handleSetMessageState(data.message));
+          dispatch(messageOp.handleResponseTypeState(data.responseType));
+        }
       } catch (error) {
         console.log(error);
       }
@@ -102,12 +110,14 @@ class PostApi {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-
-        dispatch(modalOp.handlePostUpdateState({ show: false, id: null }));
-
         const data = response.data;
 
-        dispatch(postOp.handleUpdatePost(data));
+        if (response.status === 200) {
+          dispatch(messageOp.handleSetMessageState(data.message));
+          dispatch(messageOp.handleResponseTypeState(data.responseType));
+          dispatch(modalOp.handlePostUpdateState({ show: false, id: null }));
+          dispatch(postOp.handleUpdatePost(data.updatePost));
+        }
       } catch (error) {
         console.log(error);
       } finally {
@@ -124,9 +134,15 @@ class PostApi {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-
+        const data = response.data;
         if (response.status === 200) {
-          dispatch(modalOp.handleRemovePostModalState(false));
+          const promise = new Promise((resolve) => {
+            dispatch(modalOp.handleRemovePostModalState(false));
+            dispatch(messageOp.handleSetMessageState(data.message));
+            dispatch(messageOp.handleResponseTypeState(data.responseType));
+            resolve();
+          });
+          await promise;
           redirectHomePage();
         }
       } catch (error) {
