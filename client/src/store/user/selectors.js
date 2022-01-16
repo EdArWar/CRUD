@@ -2,7 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 
 const userSelector = (state) => state.user;
 
-const userData = createSelector([userSelector], (user) => user.userDate);
+const userData = createSelector([userSelector], (user) => user.userData);
 
 const userInfoPanel = createSelector(
   [userSelector],

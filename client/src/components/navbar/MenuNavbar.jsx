@@ -12,7 +12,6 @@ const MenuNavbar = () => {
   const isAuth = useSelector(globalSel.isAuth);
   const signInModalState = useSelector(modalSel.signInModalState);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -34,10 +33,6 @@ const MenuNavbar = () => {
                 }}
                 onClick={() => {
                   dispatch(userOp.handleSetUserInfoPanel(true));
-                  // dispatch(userOp.handleSetUserData([]));
-                  // dispatch(globalOp.handleAuthState(null));
-                  // localStorage.removeItem("token");
-                  // navigate("/", { replace: true });
                 }}
               />
             ) : (
