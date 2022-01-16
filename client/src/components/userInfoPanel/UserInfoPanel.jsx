@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { globalOp } from "../../store/global";
 import { userOp, userSel } from "../../store/user";
+import AccordionOptions from "./content/AccordionOptions";
 import "./UserInfoPanel.css";
 
 const UserInfoPanel = () => {
@@ -45,16 +46,23 @@ const UserInfoPanel = () => {
                   className="rounded-circle"
                   alt=""
                 />
-                <h3 className="mt-2">{userData.name}</h3>{" "}
+                <h3 className="mt-2">{userData.name}</h3>
                 <span className="mt-1 clearfix">{userData.id}</span>
-                <hr className="user_info_panel_line" />{" "}
+                <hr className="user_info_panel_line" />
+                <div
+                  style={{
+                    width: "100%",
+                  }}
+                >
+                  <AccordionOptions />
+                </div>
                 <div className="user_info_panel_profile mt-5">
                   <Button
                     onClick={onLogout}
                     className="user_info_panel_profile_button px-5"
                   >
                     Logout
-                  </Button>{" "}
+                  </Button>
                 </div>
               </div>
             </div>
