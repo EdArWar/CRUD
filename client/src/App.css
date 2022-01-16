@@ -44,3 +44,20 @@
 #__react-alert__ div div div button {
   width: fit-content;
 }
+
+.my-node-enter {
+  transform: translateX(-400px);
+  opacity: 0;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+}
+.my-node-exit {
+  opacity: 1;
+  transform: translateX(0px);
+}
+.my-node-exit-active {
+  opacity: 0;
+  transform: translateX(-400px);
+}

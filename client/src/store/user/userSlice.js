@@ -8,5 +8,8 @@ export const userSlice = createSlice({
     setUserData(state, action) {
       state.userData = action.payload;
     },
+    setUserInfoPanel(state, action) {
+      state.userInfoPanel = action.payload;
+    },
   },
 });

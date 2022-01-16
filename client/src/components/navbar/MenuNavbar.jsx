@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { MdLogin, MdLogout } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { globalOp, globalSel } from "../../store/global";
+import { globalSel } from "../../store/global";
 import { modalOp, modalSel } from "../../store/modal";
 import { userOp } from "../../store/user";
 import CustomLink from "../custom/link/CustomLink";
@@ -25,32 +26,31 @@ const MenuNavbar = () => {
           </Nav>
           <Nav>
             {!!isAuth ? (
-              <span
+              <MdLogout
                 style={{
                   color: "white",
                   cursor: "pointer",
+                  fontSize: "22px",
                 }}
                 onClick={() => {
-                  dispatch(userOp.handleSetUserData([]));
-                  dispatch(globalOp.handleAuthState(null));
-                  localStorage.removeItem("token");
-                  navigate("/", { replace: true });
+                  dispatch(userOp.handleSetUserInfoPanel(true));
+                  // dispatch(userOp.handleSetUserData([]));
+                  // dispatch(globalOp.handleAuthState(null));
+                  // localStorage.removeItem("token");
+                  // navigate("/", { replace: true });
                 }}
-              >
-                Logout
-              </span>
+              />
             ) : (
-              <span
+              <MdLogin
                 style={{
                   color: "white",
                   cursor: "pointer",
+                  fontSize: "22px",
                 }}
                 onClick={() =>
                   dispatch(modalOp.handleSignInState(!signInModalState))
                 }
-              >
-                Login
-              </span>
+              />
             )}
           </Nav>
         </Navbar.Collapse>

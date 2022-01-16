@@ -1,0 +1,64 @@
+.user_info_panel_container {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999;
+}
+
+.user_info_panel_empty_zone {
+  background-color: rgba(65, 67, 57, 0.7);
+}
+
+.user_info_panel_content {
+  padding: 0;
+}
+.user_info_panel_card {
+  color: #fff;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(145deg, #9a40a9, #b74cc9);
+  border: none;
+  overflow-x: hidden;
+  padding-top: 10%;
+}
+
+.user_info_panel_neo-button {
+  width: 40px;
+  height: 40px;
+  outline: 0 !important;
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #9a40a9, #b74cc9);
+  box-shadow: inset 20px 20px 60px #913ca0, inset -20px -20px 60px #c552d8;
+}
+
+.user_info_panel_num {
+  color: #eee !important;
+}
+
+.user_info_panel_line {
+  color: #fff;
+}
+
+.user_info_panel_neo-button:active {
+  border-radius: 50%;
+  background: #ab47bc;
+  box-shadow: 28px 28px 57px #933da2, -28px -28px 57px #c351d6;
+}
+
+.user_info_panel_profile_button {
+  color: #fff;
+  padding: 10px;
+  border: none;
+  outline: 0 !important;
+  border-radius: 50px;
+  background: #ab47bc;
+  box-shadow: 28px 28px 57px #933da2, -28px -28px 57px #c351d6;
+}
