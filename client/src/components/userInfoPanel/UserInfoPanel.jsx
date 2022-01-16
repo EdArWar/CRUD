@@ -7,15 +7,11 @@ import { userOp, userSel } from "../../store/user";
 import "./UserInfoPanel.css";
 
 const UserInfoPanel = () => {
-  console.log("UserInfoPanel");
   const userData = useSelector(userSel.userData);
   const userInfoPanel = useSelector(userSel.userInfoPanel);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  console.log("userData", userData);
-  console.log("userInfoPanel", userInfoPanel);
 
   const onLogout = () => {
     dispatch(userOp.handleSetUserInfoPanel(false));
