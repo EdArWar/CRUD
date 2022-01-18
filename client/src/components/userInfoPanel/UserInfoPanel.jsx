@@ -24,6 +24,11 @@ const UserInfoPanel = () => {
     navigate("/", { replace: true });
   };
 
+  const onEmptyZoneClicked = () => {
+    dispatch(userOp.handleSetUserInfoPanel(false));
+    document.body.classList.remove("disable_scroll");
+  };
+
   const onEditClick = () => {
     dispatch(modalOp.handleUserInfoModalState(true));
   };
@@ -37,9 +42,7 @@ const UserInfoPanel = () => {
       >
         <Col
           xs={8}
-          onClick={() => {
-            dispatch(userOp.handleSetUserInfoPanel(false));
-          }}
+          onClick={onEmptyZoneClicked}
           className="user_info_panel_empty_zone"
         ></Col>
         <Col xs={4} className="user_info_panel_content">

@@ -12,6 +12,15 @@ const MenuNavbar = () => {
   const signInModalState = useSelector(modalSel.signInModalState);
   const dispatch = useDispatch();
 
+  const onLogout = () => {
+    dispatch(userOp.handleSetUserInfoPanel(true));
+    document.body.classList.add("disable_scroll");
+  };
+
+  const onLogin = () => {
+    dispatch(modalOp.handleSignInState(!signInModalState));
+  };
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -30,9 +39,7 @@ const MenuNavbar = () => {
                   cursor: "pointer",
                   fontSize: "22px",
                 }}
-                onClick={() => {
-                  dispatch(userOp.handleSetUserInfoPanel(true));
-                }}
+                onClick={onLogout}
               />
             ) : (
               <MdLogin
@@ -41,9 +48,7 @@ const MenuNavbar = () => {
                   cursor: "pointer",
                   fontSize: "22px",
                 }}
-                onClick={() =>
-                  dispatch(modalOp.handleSignInState(!signInModalState))
-                }
+                onClick={onLogin}
               />
             )}
           </Nav>

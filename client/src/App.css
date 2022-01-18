@@ -61,3 +61,7 @@
   opacity: 0;
   transform: translateX(-400px);
 }
+
+.disable_scroll {
+  overflow: hidden;
+}
