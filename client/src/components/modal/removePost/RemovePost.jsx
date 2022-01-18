@@ -6,7 +6,6 @@ import { useNavigate } from "react-router";
 import PostApi from "../../../api/PostApi";
 import { modalOp } from "../../../store/modal";
 import { postSel } from "../../../store/post";
-import ModalCustom from "../ModalCustom";
 
 const RemovePost = () => {
   const dispatch = useDispatch();
@@ -23,52 +22,44 @@ const RemovePost = () => {
   };
 
   return (
-    <ModalCustom
-      show={true}
-      onHide={() => {
-        dispatch(modalOp.handleRemovePostModalState(false));
-      }}
-      title="Remove Post"
-    >
+    <div>
+      <h2
+        style={{
+          textAlign: "center",
+        }}
+      >
+        {postDetails.name}
+      </h2>
       <div>
-        <h2
-          style={{
-            textAlign: "center",
-          }}
-        >
-          {postDetails.name}
-        </h2>
-        <div>
-          <img src={postDetails.avatar} width="100%" alt="avatar" />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "15px",
-          }}
-        >
-          <Button
-            style={{
-              marginRight: "15px",
-            }}
-            variant="success"
-            onClick={() => dispatch(modalOp.handleRemovePostModalState(false))}
-          >
-            <BsFillXCircleFill />
-          </Button>
-          <Button
-            style={{
-              marginLeft: "15px",
-            }}
-            variant="danger"
-            onClick={onRemovePost}
-          >
-            <BsFillTrashFill />
-          </Button>
-        </div>
+        <img src={postDetails.avatar} width="100%" alt="avatar" />
       </div>
-    </ModalCustom>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "15px",
+        }}
+      >
+        <Button
+          style={{
+            marginRight: "15px",
+          }}
+          variant="success"
+          onClick={() => dispatch(modalOp.handleSetModalState(null))}
+        >
+          <BsFillXCircleFill />
+        </Button>
+        <Button
+          style={{
+            marginLeft: "15px",
+          }}
+          variant="danger"
+          onClick={onRemovePost}
+        >
+          <BsFillTrashFill />
+        </Button>
+      </div>
+    </div>
   );
 };
 

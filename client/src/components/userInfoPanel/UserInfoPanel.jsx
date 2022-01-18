@@ -6,12 +6,12 @@ import { useNavigate } from "react-router";
 import { globalOp } from "../../store/global";
 import { modalOp } from "../../store/modal/";
 import { userOp, userSel } from "../../store/user";
+import { getModalParams, MODAL_NAME } from "../../utils/ModalParams";
 import AccordionOptions from "./content/AccordionOptions";
 import "./UserInfoPanel.css";
 
 const UserInfoPanel = () => {
   const userData = useSelector(userSel.userData);
-  const userInfoPanel = useSelector(userSel.userInfoPanel);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,7 +30,11 @@ const UserInfoPanel = () => {
   };
 
   const onEditClick = () => {
-    dispatch(modalOp.handleUserInfoModalState(true));
+    dispatch(
+      modalOp.handleSetModalState(
+        getModalParams(MODAL_NAME.USER_INFO_PANEL_UPDATE)
+      )
+    );
   };
 
   return (

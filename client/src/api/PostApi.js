@@ -115,7 +115,7 @@ class PostApi {
         if (response.status === 200) {
           dispatch(messageOp.handleSetMessageState(data.message));
           dispatch(messageOp.handleResponseTypeState(data.responseType));
-          dispatch(modalOp.handlePostUpdateState({ show: false, id: null }));
+          dispatch(modalOp.handleSetModalState(null));
           dispatch(postOp.handleUpdatePost(data.updatePost));
         }
       } catch (error) {
@@ -137,7 +137,7 @@ class PostApi {
         const data = response.data;
         if (response.status === 200) {
           const promise = new Promise((resolve) => {
-            dispatch(modalOp.handleRemovePostModalState(false));
+            dispatch(modalOp.handleSetModalState(null));
             dispatch(messageOp.handleSetMessageState(data.message));
             dispatch(messageOp.handleResponseTypeState(data.responseType));
             resolve();

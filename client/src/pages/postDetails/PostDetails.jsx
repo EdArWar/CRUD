@@ -15,6 +15,7 @@ import { useParams } from "react-router-dom";
 import PostApi from "../../api/PostApi";
 import { modalOp } from "../../store/modal";
 import { postSel } from "../../store/post";
+import { getModalParams, MODAL_NAME } from "../../utils/ModalParams";
 import Loader from "./../../components/loader/Loader";
 
 const PostDetails = () => {
@@ -27,6 +28,15 @@ const PostDetails = () => {
   useEffect(() => {
     dispatch(PostApi.getPostById_api(id, setSkeletonState));
   }, []);
+
+  const onPostRemove = () => {
+    dispatch(
+      modalOp.handleSetModalState({
+        ...getModalParams(MODAL_NAME.POST_REMOVE),
+        id: post._id,
+      })
+    );
+  };
 
   return (
     <>
@@ -62,14 +72,7 @@ const PostDetails = () => {
                   style={{
                     cursor: "Pointer",
                   }}
-                  onClick={() =>
-                    dispatch(
-                      modalOp.handleRemovePostModalState({
-                        show: true,
-                        id: post._id,
-                      })
-                    )
-                  }
+                  onClick={onPostRemove}
                 />
               </div>
             </Row>

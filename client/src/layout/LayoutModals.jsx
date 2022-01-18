@@ -1,25 +1,31 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import PostUpdateModal from "../components/modal/postUpdateModal/PostUpdateModal";
-import RemovePost from "../components/modal/removePost/RemovePost";
+import { useDispatch, useSelector } from "react-redux";
+import ModalCustom from "../components/modal/ModalCustom";
 import SignInModal from "../components/modal/signIn/SignInModal";
-import { modalSel } from "../store/modal";
+import { modalOp, modalSel } from "../store/modal";
+import { isNotEmpty } from "../utils/Utils";
+import PostUpdateModal from "./../components/modal/postUpdateModal/PostUpdateModal";
+import RemovePost from "./../components/modal/removePost/RemovePost";
 import UserInfoUpdateModal from "./../components/modal/userUpdate/UserInfoUpdateModal";
 
 const LayoutModals = () => {
-  const postUpdateModalState = useSelector(modalSel.postUpdateModalState);
-  const signInModalState = useSelector(modalSel.signInModalState);
-  const removePostModalState = useSelector(modalSel.removePostModalState);
-  const userInfoUpdateModalState = useSelector(
-    modalSel.userInfoUpdateModalState
-  );
+  const dispatch = useDispatch();
+  const modalState = useSelector(modalSel.modalState);
 
   return (
     <>
-      {postUpdateModalState.show && <PostUpdateModal />}
-      {signInModalState && <SignInModal />}
-      {removePostModalState && <RemovePost />}
-      {userInfoUpdateModalState && <UserInfoUpdateModal />}
+      <ModalCustom
+        show={isNotEmpty(modalState)}
+        onHide={() => {
+          dispatch(modalOp.handleSetModalState(null));
+        }}
+        title={modalState?.title}
+      >
+        {modalState?.signIn && <SignInModal />}
+        {modalState?.removePost && <RemovePost />}
+        {modalState?.updatePost && <PostUpdateModal />}
+        {modalState?.userInfoPanel && <UserInfoUpdateModal />}
+      </ModalCustom>
     </>
   );
 };

@@ -3,13 +3,13 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { globalSel } from "../../store/global";
-import { modalOp, modalSel } from "../../store/modal";
+import { modalOp } from "../../store/modal";
 import { userOp } from "../../store/user";
+import { getModalParams, MODAL_NAME } from "../../utils/ModalParams";
 import CustomLink from "../custom/link/CustomLink";
 
 const MenuNavbar = () => {
   const isAuth = useSelector(globalSel.isAuth);
-  const signInModalState = useSelector(modalSel.signInModalState);
   const dispatch = useDispatch();
 
   const onLogout = () => {
@@ -18,7 +18,7 @@ const MenuNavbar = () => {
   };
 
   const onLogin = () => {
-    dispatch(modalOp.handleSignInState(!signInModalState));
+    dispatch(modalOp.handleSetModalState(getModalParams(MODAL_NAME.SIGN_IN)));
   };
 
   return (

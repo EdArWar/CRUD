@@ -57,7 +57,7 @@ class AuthApi {
           dispatch(globalOp.handleAuthState(true));
           dispatch(userOp.handleSetUserData(userData));
           localStorage.setItem("token", token);
-          dispatch(modalOp.handleSignInState(false));
+          dispatch(modalOp.handleSetModalState(null));
         }
 
         dispatch(messageOp.handleSetMessageState(data.message));

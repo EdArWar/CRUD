@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import PostApi from "../../api/PostApi";
 import { globalOp, globalSel } from "../../store/global";
 import { modalOp } from "../../store/modal";
+import { getModalParams, MODAL_NAME } from "./../../utils/ModalParams";
 
 const CardItem = ({ post }) => {
   const dispatch = useDispatch();
@@ -21,7 +22,12 @@ const CardItem = ({ post }) => {
 
   const onUpdateClicked = () => {
     dispatch(globalOp.handleSetUpdatePost(post));
-    dispatch(modalOp.handlePostUpdateState({ show: true, id: post._id }));
+    dispatch(
+      modalOp.handleSetModalState({
+        ...getModalParams(MODAL_NAME.POST_UPDATE),
+        id: post._id,
+      })
+    );
   };
 
   const onLikeClicked = () => {
