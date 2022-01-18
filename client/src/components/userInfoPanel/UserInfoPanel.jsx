@@ -1,8 +1,10 @@
 import React, { memo } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { MdEditNote } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { globalOp } from "../../store/global";
+import { modalOp } from "../../store/modal/";
 import { userOp, userSel } from "../../store/user";
 import AccordionOptions from "./content/AccordionOptions";
 import "./UserInfoPanel.css";
@@ -22,6 +24,10 @@ const UserInfoPanel = () => {
     navigate("/", { replace: true });
   };
 
+  const onEditClick = () => {
+    dispatch(modalOp.handleUserInfoModalState(true));
+  };
+
   return (
     <Container fluid className="user_info_panel_container">
       <Row
@@ -39,6 +45,9 @@ const UserInfoPanel = () => {
         <Col xs={4} className="user_info_panel_content">
           <div>
             <div className="user_info_panel_card">
+              <div className="user_info_panel_icon">
+                <MdEditNote onClick={onEditClick} size={28} />
+              </div>
               <div className="text-center">
                 <img
                   src="https://i.imgur.com/stD0Q19.jpg"

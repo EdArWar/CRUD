@@ -17,10 +17,16 @@ const removePostModalState = createSelector(
   (modal) => modal.removePostModalState
 );
 
+const userInfoUpdateModalState = createSelector(
+  [modalSelector],
+  (modal) => modal.userInfoUpdateModalState
+);
+
 const selectors = {
   signInModalState,
   postUpdateModalState,
   removePostModalState,
+  userInfoUpdateModalState,
 };
 
 export default selectors;

@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
 import { globalSel } from "../../store/global";
 import { modalOp, modalSel } from "../../store/modal";
 import { userOp } from "../../store/user";
