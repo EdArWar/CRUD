@@ -83,6 +83,8 @@ class UserController {
           id: user.id,
           email: user.email,
           name: user.name,
+          avatar: user.avatar,
+          setting: user.setting,
         },
       });
     } catch (error) {
@@ -107,6 +109,8 @@ class UserController {
           id: user.id,
           email: user.email,
           name: user.name,
+          avatar: user.avatar,
+          setting: user.setting,
         },
       });
     } catch (e) {
@@ -116,6 +120,15 @@ class UserController {
         responseType: RequestTypes.ERROR,
         ...error,
       });
+    }
+  }
+
+  async updateUser(req, res) {
+    try {
+      console.log("updateUser");
+      res.end("DONE!!!");
+    } catch (error) {
+      console.log(error);
     }
   }
 }

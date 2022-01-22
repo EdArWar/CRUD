@@ -18,4 +18,6 @@ router.post(
 router.post("/login", UserController.login);
 router.get("/auth", auth, UserController.auth);
 
+router.patch("/update", UserController.updateUser);
+
 module.exports = router;
