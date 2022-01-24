@@ -125,8 +125,28 @@ class UserController {
 
   async updateUser(req, res) {
     try {
-      console.log("updateUser");
-      res.end("DONE!!!");
+      const { id } = req.user;
+
+      console.log("id", id);
+      const { name, lang, theme } = req.body;
+
+      const updateUser = await User.findByIdAndUpdate(
+        id,
+        {
+          name,
+          setting: {
+            lang,
+            theme,
+          },
+        },
+        { new: true }
+      );
+
+      res.status(200).json({
+        message: "User Updated ",
+        responseType: RequestTypes.SUCCESS,
+        updateUser,
+      });
     } catch (error) {
       console.log(error);
     }

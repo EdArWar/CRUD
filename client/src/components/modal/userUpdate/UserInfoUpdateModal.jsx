@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import AuthApi from "../../../api/AuthApi";
 import { userSel } from "../../../store/user";
 import RadioInput from "../../radioInput/RadioInput";
 
 const UserInfoUpdateModal = () => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState("");
   const [lang, setLang] = useState("");
   const [theme, setTheme] = useState("");
@@ -36,7 +39,7 @@ const UserInfoUpdateModal = () => {
   };
 
   const onSave = () => {
-    //
+    dispatch(AuthApi.updateUserInfo_api(name, lang, theme));
   };
 
   return (

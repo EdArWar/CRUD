@@ -9,7 +9,7 @@ class AuthApi {
   registration(email, name, password) {
     return async (dispatch) => {
       try {
-        // const response = await fetch(`${this.endPoint}/api/auth/registration`, {
+        // const response = await fetch(`${this.endPoint}auth/registration`, {
         //   method: "POST",
         //   headers: {
         //     "Content-Type": "application/json",
@@ -27,7 +27,7 @@ class AuthApi {
           password,
         };
 
-        const response = await axios.post(`${API}/api/auth/registration`, body);
+        const response = await axios.post(`${API}/auth/registration`, body);
         const data = response.data;
         if (!data.errorStatus) {
           dispatch(globalOp.handleRegisteredState(false));
@@ -43,7 +43,7 @@ class AuthApi {
   login(email, password) {
     return async (dispatch) => {
       try {
-        const response = await axios.post(`${API}/api/auth/login`, {
+        const response = await axios.post(`${API}auth/login`, {
           email,
           password,
         });
@@ -71,7 +71,7 @@ class AuthApi {
   auth() {
     return async (dispatch) => {
       try {
-        const response = await axios.get(`${API}/api/auth/auth`, {
+        const response = await axios.get(`${API}auth/auth`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -81,6 +81,30 @@ class AuthApi {
 
         dispatch(userOp.handleSetUserData(userData));
         dispatch(globalOp.handleAuthState(true));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }
+
+  updateUserInfo_api(name, lang, theme) {
+    return async (dispatch) => {
+      try {
+        const body = {
+          name,
+          lang,
+          theme,
+        };
+
+        const response = await axios.patch(`${API}auth/update`, body, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        const data = response.data;
+
+        console.log("data", data);
       } catch (error) {
         console.log(error);
       }

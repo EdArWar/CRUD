@@ -18,7 +18,7 @@ class PostApi {
           avatar,
         };
 
-        const response = await axios.post(`${API}/api/posts/create`, body, {
+        const response = await axios.post(`${API}posts/create`, body, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -40,7 +40,7 @@ class PostApi {
     return async (dispatch) => {
       try {
         dispatch(globalOp.handleLoaderState(true));
-        const response = await axios.get(`${API}/api/posts/`, {
+        const response = await axios.get(`${API}posts/`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -59,7 +59,7 @@ class PostApi {
   getPostById_api(id, setSkeletonState) {
     return async (dispatch) => {
       try {
-        // const response = await fetch(`${API}/api/posts/${id}`, {
+        // const response = await fetch(`${API}posts/${id}`, {
         //   method: "GET",
         //   headers: {
         //     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -68,7 +68,7 @@ class PostApi {
 
         // const data = await response.json();
 
-        const response = await axios.get(`${API}/api/posts/${id}`, {
+        const response = await axios.get(`${API}posts/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -105,7 +105,7 @@ class PostApi {
           avatar,
         };
 
-        const response = await axios.patch(`${API}/api/posts/update`, body, {
+        const response = await axios.patch(`${API}posts/update`, body, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -129,7 +129,7 @@ class PostApi {
   removePost_api(id, redirectHomePage) {
     return async (dispatch) => {
       try {
-        const response = await axios.delete(`${API}/api/posts/${id}`, {
+        const response = await axios.delete(`${API}posts/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -155,7 +155,7 @@ class PostApi {
     return async (dispatch) => {
       try {
         const response = await axios.patch(
-          `${API}/api/posts/${id}/likePost`,
+          `${API}posts/${id}/likePost`,
           {},
           {
             headers: {
