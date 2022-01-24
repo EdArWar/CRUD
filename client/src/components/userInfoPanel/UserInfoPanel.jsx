@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { MdEditNote } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import avatar_icon from "../../assets/images/avatar.png";
 import { globalOp } from "../../store/global";
 import { modalOp } from "../../store/modal/";
 import { userOp, userSel } from "../../store/user";
@@ -12,7 +13,6 @@ import "./UserInfoPanel.css";
 
 const UserInfoPanel = () => {
   const userData = useSelector(userSel.userData);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -57,7 +57,7 @@ const UserInfoPanel = () => {
               </div>
               <div className="text-center">
                 <img
-                  src="https://i.imgur.com/stD0Q19.jpg"
+                  src={userData.avatar || avatar_icon}
                   width="100"
                   className="rounded-circle"
                   alt=""
