@@ -56,12 +56,18 @@ const UserInfoPanel = () => {
                 <MdEditNote onClick={onEditClick} size={28} />
               </div>
               <div className="text-center">
-                <img
-                  src={userData.avatar || avatar_icon}
-                  width="100"
-                  className="rounded-circle"
-                  alt=""
-                />
+                <div
+                  style={{
+                    backgroundImage: `url(${userData.avatar || avatar_icon})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    width: "150px",
+                    height: "150px",
+                    margin: "0 auto",
+                    borderRadius: "50%",
+                  }}
+                ></div>
+
                 <h3 className="mt-2">{userData.name}</h3>
                 <span className="mt-1 clearfix">{userData.id}</span>
                 <hr className="user_info_panel_line" />

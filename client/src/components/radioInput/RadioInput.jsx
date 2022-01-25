@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, InputGroup } from "react-bootstrap";
 
-const RadioInput = ({ text, name, onChange, defaultLang }) => {
+const RadioInput = ({ id, text, name, onChange, defaultLang }) => {
   return (
     <InputGroup
       className="mb-3"
@@ -11,17 +11,17 @@ const RadioInput = ({ text, name, onChange, defaultLang }) => {
       }}
     >
       <Form.Label
-        htmlFor={text}
+        htmlFor={id}
         style={{
           display: "flex",
           justifyContent: "center",
         }}
       >
         <InputGroup.Radio
-          id={text}
+          id={id}
           name={name}
           aria-label="Checkbox for following text input"
-          onChange={(e) => onChange(e.target.id)}
+          onChange={(e) => onChange(text)}
           checked={defaultLang === text}
         />
         <InputGroup.Text>{text.toUpperCase()}</InputGroup.Text>

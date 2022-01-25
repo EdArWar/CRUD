@@ -87,13 +87,14 @@ class AuthApi {
     };
   }
 
-  updateUserInfo_api(name, lang, theme) {
+  updateUserInfo_api(name, lang, theme, avatar) {
     return async (dispatch) => {
       try {
         const body = {
           name,
           lang,
           theme,
+          avatar,
         };
 
         const response = await axios.patch(`${API}auth/update`, body, {
@@ -104,7 +105,12 @@ class AuthApi {
 
         const data = response.data;
 
-        console.log("data", data);
+        if (response.status === 200) {
+          dispatch(modalOp.handleSetModalState(null));
+          dispatch(userOp.handleSetUserData(data.updateUser));
+          dispatch(messageOp.handleSetMessageState(data.message));
+          dispatch(messageOp.handleResponseTypeState(data.responseType));
+        }
       } catch (error) {
         console.log(error);
       }

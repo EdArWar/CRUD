@@ -127,13 +127,13 @@ class UserController {
     try {
       const { id } = req.user;
 
-      console.log("id", id);
-      const { name, lang, theme } = req.body;
+      const { name, lang, theme, avatar } = req.body;
 
       const updateUser = await User.findByIdAndUpdate(
         id,
         {
           name,
+          avatar,
           setting: {
             lang,
             theme,
@@ -145,7 +145,7 @@ class UserController {
       res.status(200).json({
         message: "User Updated ",
         responseType: RequestTypes.SUCCESS,
-        updateUser,
+        updateUser: updateUser,
       });
     } catch (error) {
       console.log(error);

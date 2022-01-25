@@ -4,7 +4,7 @@ const ThemeSelect = () => {
   return (
     <div className="cntr">
       <label htmlFor="rdo-1" className="btn-radio">
-        <input type="radio" id="rdo-1" name="radio-grp" />
+        <input type="radio" id="rdo-1" name="theme_radio-grp" />
         <svg width="20px" height="20px" viewBox="0 0 20 20">
           <circle cx="10" cy="10" r="9"></circle>
           <path
@@ -25,7 +25,7 @@ const ThemeSelect = () => {
         </span>
       </label>
       <label htmlFor="rdo-2" className="btn-radio">
-        <input type="radio" id="rdo-2" name="radio-grp" />
+        <input type="radio" id="rdo-2" name="theme_radio-grp" />
         <svg width="20px" height="20px" viewBox="0 0 20 20">
           <circle cx="10" cy="10" r="9"></circle>
           <path
