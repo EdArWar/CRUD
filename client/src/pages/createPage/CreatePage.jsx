@@ -12,11 +12,9 @@ const CreatePage = () => {
   const isAuth = useSelector(globalSel.isAuth);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (!isAuth) {
-  //     navigate("/", { replace: true });
-  //   }
-  // }, [isAuth]);
+  const redirectMainPage = () => {
+    navigate("/", { replace: true });
+  };
 
   const [name, setName] = useState("Naruto");
   const [clan, setClan] = useState("Uzumaki");
@@ -33,7 +31,8 @@ const CreatePage = () => {
         organization,
         profession,
         position,
-        avatar
+        avatar,
+        redirectMainPage
       )
     );
   };

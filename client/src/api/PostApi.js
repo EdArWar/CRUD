@@ -6,7 +6,15 @@ import { postOp } from "../store/post";
 import { API } from "./API";
 
 class PostApi {
-  createPost_api(name, clan, organization, profession, position, avatar) {
+  createPost_api(
+    name,
+    clan,
+    organization,
+    profession,
+    position,
+    avatar,
+    redirectMainPage
+  ) {
     return async (dispatch) => {
       try {
         const body = {
@@ -29,6 +37,7 @@ class PostApi {
         if (response.status === 200) {
           dispatch(messageOp.handleSetMessageState(data.message));
           dispatch(messageOp.handleResponseTypeState(data.responseType));
+          redirectMainPage();
         }
       } catch (error) {
         console.log(error);
