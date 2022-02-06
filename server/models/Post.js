@@ -11,7 +11,8 @@ const PostSchema = new Schema({
     name: String,
   },
   avatar: String,
-  likes: { type: [String], default: [] },
+  likes: { type: [Object], default: [] },
+  status: String,
   createdAt: {
     type: Date,
     default: new Date(),

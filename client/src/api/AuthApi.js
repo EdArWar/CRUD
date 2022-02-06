@@ -27,7 +27,7 @@ class AuthApi {
           password,
         };
 
-        const response = await axios.post(`${API}/auth/registration`, body);
+        const response = await axios.post(`${API}auth/registration`, body);
         const data = response.data;
         if (!data.errorStatus) {
           dispatch(globalOp.handleRegisteredState(false));

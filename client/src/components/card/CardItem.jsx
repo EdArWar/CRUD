@@ -14,9 +14,11 @@ import { Link } from "react-router-dom";
 import PostApi from "../../api/PostApi";
 import { globalOp, globalSel } from "../../store/global";
 import { modalOp } from "../../store/modal";
+import LikedAvatar from "../likedAvatar/LikedAvatar";
 import { getModalParams, MODAL_NAME } from "./../../utils/ModalParams";
 
 const CardItem = ({ post }) => {
+  console.log("post", post);
   const dispatch = useDispatch();
   const isAuth = useSelector(globalSel.isAuth);
 
@@ -113,12 +115,15 @@ const CardItem = ({ post }) => {
                 style={{
                   fontSize: "18px",
                   padding: "2px",
+                  cursor: "pointer",
+                  marginLeft: "5px",
                 }}
               >
                 {post.likes.length || ""}
               </span>
             </div>
             <Button onClick={onUpdateClicked}>Update</Button>
+            <LikedAvatar />
           </Card.Body>
         </Card>
       </div>

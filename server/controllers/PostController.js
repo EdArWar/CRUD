@@ -97,12 +97,20 @@ class PostController {
 
       const post = await Post.findById(id);
 
-      const index = post.likes.findIndex((id) => id === String(req.user.id));
+      const user = await User.findById(req.user.id);
+
+      const { name, avatar } = user;
+
+      const index = post.likes.findIndex(
+        (item) => item.id === String(req.user.id)
+      );
 
       if (index === -1) {
-        post.likes.push(req.user.id);
+        post.likes.push({ id, name, avatar });
       } else {
-        post.likes = post.likes.filter((id) => id !== String(req.user.id));
+        post.likes = post.likes.filter(
+          (item) => item.id !== String(req.user.id)
+        );
       }
 
       const updatePost = await Post.findByIdAndUpdate(id, post, { new: true });
